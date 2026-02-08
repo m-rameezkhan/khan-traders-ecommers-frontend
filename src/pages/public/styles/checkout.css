@@ -1,0 +1,194 @@
+/* Checkout Page Wrapper */
+.checkout-page {
+    background: linear-gradient(135deg, var(--color-primary-light-3) 0%, #ffffff 100%);
+    min-height: 100vh;
+    padding: 60px 20px;
+}
+
+.checkout-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* Main Layout */
+.checkout-wrapper {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Left Side: Items List */
+.checkout-items {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(5, 94, 87, 0.05);
+    border: 1px solid var(--color-border);
+}
+
+.checkout-item-card {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: transform 0.2s ease;
+}
+
+.checkout-item-card:last-child {
+    border-bottom: none;
+}
+
+.checkout-item-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-right: 20px;
+    border: 1px solid var(--color-border);
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h4 {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 5px;
+}
+
+.item-info p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.item-total-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+}
+
+/* Right Side: Summary Card */
+.checkout-summary-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(44, 94, 63, 0.1);
+    position: sticky;
+    top: 100px;
+}
+
+.checkout-summary-card h3 {
+    font-size: 1.4rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-primary-light-3);
+    padding-bottom: 10px;
+}
+
+.summary-details .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+}
+
+.summary-details .row span:first-child {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.summary-details .row span:last-child {
+    text-align: right;
+    max-width: 60%;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 20px 0;
+}
+
+/* Grand Total Styling */
+.grand-total {
+    margin-top: 10px;
+}
+
+.grand-total span {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: var(--color-primary-dark) !important;
+}
+
+/* Place Order Button - Matching Login/Signup */
+.place-order-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2c5e3f, #1b3022); /* Your Forest Gradient */
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(27, 48, 34, 0.2);
+}
+
+.place-order-btn:hover {
+    background: linear-gradient(135deg, #3a7a53, #24422f);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(27, 48, 34, 0.3);
+}
+
+.place-order-btn:active {
+    transform: translateY(0);
+}
+
+/* Empty State Styling */
+.checkout-page-empty {
+    text-align: center;
+    padding: 100px 20px;
+    background: var(--color-primary-light-3);
+    min-height: 100vh;
+}
+
+.checkout-page-empty h2 {
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+}
+
+.checkout-page-empty button {
+    padding: 12px 30px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .checkout-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .checkout-summary-card {
+        position: static;
+    }
+}

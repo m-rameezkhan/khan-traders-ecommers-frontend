@@ -1,0 +1,86 @@
+/* Container Enhancement */
+.products-page {
+  padding: 40px 5%; /* More breathing room */
+  max-width: 1400px; /* Slightly wider for modern monitors */
+  margin: auto;
+  min-height: 80vh;
+}
+
+/* Page Header with Decorative Elements */
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.page-header h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-primary-dark-2);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.page-header p {
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Subtle underline for the header description */
+.page-header p::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: var(--color-primary-light);
+  margin: 10px auto 0;
+  border-radius: 10px;
+}
+
+/* Enhanced Grid Layout */
+.products-grid {
+  display: grid;
+  /* Balanced columns: won't look stretched on large screens */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+  padding: 10px; /* Prevents card shadows from clipping */
+}
+
+/* Animation for the whole grid on page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.products-grid {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Tablet & Mobile Adjustments */
+@media (max-width: 768px) {
+  .products-page {
+    padding: 40px 1.5rem;
+  }
+  .page-header {
+    margin: 0px;
+  }
+  .page-header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+}

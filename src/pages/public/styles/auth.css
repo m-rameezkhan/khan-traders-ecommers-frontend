@@ -1,0 +1,112 @@
+/* Full page background to match the forest vibe */
+.auth-page-wrapper {
+  background: linear-gradient(135deg, var(--color-primary-light-3) 0%, #ffffff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.auth-container {
+  max-width: 450px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98); /* Near white for readability */
+  padding: 45px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 1px solid rgba(44, 94, 63, 0.1);
+}
+
+/* Heading with a deep Forest Green */
+.auth-container h2 {
+  font-size: 2.2rem;
+  color: #1b3022; 
+  margin-bottom: 8px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+}
+
+.auth-subtitle {
+  color: #5a7d65;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+/* Input Fields - Mossy Borders */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-form input {
+  padding: 15px 20px;
+  border: 2px solid #e0e7e1;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #f9fbf9;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.auth-form input:focus {
+  border-color: #2c5e3f; /* Forest Green Focus */
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(44, 94, 63, 0.1);
+  outline: none;
+}
+
+/* Submit Button - Gradient of Greens */
+.auth-form button {
+  margin-top: 10px;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2c5e3f, #1b3022);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(27, 48, 34, 0.2);
+}
+
+.auth-form button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3a7a53, #24422f);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(27, 48, 34, 0.3);
+}
+
+.auth-form button:disabled {
+  background: #a5b5ab;
+  cursor: not-allowed;
+}
+
+/* Link Styling */
+.auth-container p {
+  margin-top: 25px;
+  color: #5a7d65;
+  font-size: 0.95rem;
+}
+
+.auth-container p a {
+  color: #2c5e3f;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.auth-container p a:hover {
+  border-bottom: 2px solid #2c5e3f;
+}
+
+/* Adding a custom icon or logo space */
+.auth-logo-space {
+  font-size: 2.5rem;
+  color: #2c5e3f;
+  margin-bottom: 10px;
+}

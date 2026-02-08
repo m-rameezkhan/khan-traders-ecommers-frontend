@@ -1,0 +1,126 @@
+/* Featured Products Section */
+.featured-products {
+    padding: 80px 10%;
+    background-color: var(--color-bg);
+    text-align: center;
+}
+
+/* Section Title with Accent Line */
+.featured-products .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-primary-dark-2);
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+.featured-products .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+    border-radius: 2px;
+}
+
+/* The Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Modern Product Card */
+.featured-products .product-card {
+    background: var(--color-bg);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.featured-products .product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary-light-3);
+}
+
+/* Image Container / Zoom Effect */
+.featured-products .product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+}
+
+.featured-products .product-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Typography */
+.featured-products .product-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 8px;
+}
+
+.featured-products .price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-accent-2);
+    margin-bottom: 20px;
+}
+
+/* Modern Secondary Button */
+.secondary-btn {
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 12px;
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Pushes button to bottom */
+}
+
+.secondary-btn:hover {
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 8px 15px rgba(5, 94, 87, 0.2);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+    .featured-products {
+        padding: 50px 5%;
+    }
+    
+    .featured-products .section-title {
+        font-size: 28px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+}
