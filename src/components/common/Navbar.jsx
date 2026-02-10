@@ -3,29 +3,30 @@ import { useState } from "react";
 import "./styles/navbar.css";
 import logo from "../../assets/images/logo/website-logo2.jpg";
 import { useCart } from "../../context/CartContext";
-import { useAuth } from "../../context/AuthContext"; // 1. Import useAuth
+import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(false);
+  // NEW: State for User Dropdown
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
-  // 2. Destructure auth states
   const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const { cartItems } = useCart();
   const itemCount = cartItems.length;
 
-  // 3. Handle Logout
   const handleLogout = () => {
     logout();
+    setUserDropdownOpen(false); // Close dropdown
     navigate("/login");
   };
 
   return (
     <nav className="nav">
       <div className="navbar">
-        {/* Upper Navbar */}
+        {/* Upper Navbar (Stays the same) */}
         <div className="upper-navbar">
           <div className="logo">
             <img className="website-logo" src={logo} alt="Logo" />
@@ -85,24 +86,55 @@ const Navbar = () => {
               </ul>
             </div>
 
-            {/* --- DYNAMIC AUTH SECTION --- */}
+            {/* --- UPDATED AUTH SECTION WITH DROPDOWN --- */}
             <div className="login-signup">
               {!isAuthenticated ? (
                 <Link to="/login" className="login-signup-link">
-                  <button className="login-signup-btn">
-                    Login / Signup
-                  </button>
+                  <button className="login-signup-btn">Login / Signup</button>
                 </Link>
               ) : (
-                <div className="user-nav-box">
-                  <span className="user-greeting">Hi, {user?.name?.split(" ")[0]}</span>
-                  <button onClick={handleLogout} className="logout-btn">
-                    Logout
+                <div className="user-profile-dropdown">
+                  <button
+                    className={`user-name-btn ${userDropdownOpen ? 'active' : ''}`}
+                    onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                  >
+                    Hi, {user?.name?.split(" ")[0]} ▾
                   </button>
+
+                  {userDropdownOpen && (
+                    <>
+                      {/* Transparent overlay to close dropdown when clicking outside */}
+                      <div className="dropdown-overlay" onClick={() => setUserDropdownOpen(false)} />
+
+                      <ul className="profile-menu">
+                        <li>
+                          <Link to="/user-profile" onClick={() => setUserDropdownOpen(false)}>
+                            <i className="fa-solid fa-user"></i> My Profile
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/orders" onClick={() => setUserDropdownOpen(false)}>
+                            <i className="fa-solid fa-box"></i> View Orders
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/cart" onClick={() => setUserDropdownOpen(false)}>
+                            <i className="fa-solid fa-cart-shopping"></i> View Cart
+                          </Link>
+                        </li>
+                        <hr />
+                        <li>
+                          <button onClick={handleLogout} className="dropdown-logout-btn">
+                            <i className="fa-solid fa-right-from-bracket"></i> Logout
+                          </button>
+                        </li>
+                      </ul>
+                    </>
+                  )}
                 </div>
               )}
             </div>
-            {/* ---------------------------- */}
+            {/* ------------------------------------------ */}
           </div>
         </div>
       </div>

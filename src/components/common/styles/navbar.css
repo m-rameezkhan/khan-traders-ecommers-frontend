@@ -345,6 +345,100 @@ body {
     transition: 0.3s;
 }
 
+
+
+/* --- User Profile Dropdown (Click-based) --- */
+.user-profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-name-btn {
+    background: rgba(255, 255, 255, 0.15); /* Match your green bar theme */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.user-name-btn:hover, .user-name-btn.active {
+    background: white;
+    color: var(--color-primary-dark);
+}
+
+/* The Dropdown Menu */
+.profile-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: white;
+    min-width: 190px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 8px 0;
+    list-style: none;
+    z-index: 1001; /* Above everything */
+    border: 1px solid var(--color-border);
+    animation: fadeInUp 0.2s ease-out;
+}
+
+/* Invisible overlay to detect clicks outside the menu */
+.dropdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background: transparent;
+}
+
+.profile-menu li a, 
+.profile-menu li button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--color-text);
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.profile-menu li a:hover,
+.profile-menu li button:hover {
+    background-color: var(--color-primary-light-3);
+    color: var(--color-primary-dark);
+}
+
+.profile-menu hr {
+    border: 0;
+    border-top: 1px solid var(--color-border);
+    margin: 5px 0;
+}
+
+.dropdown-logout-btn {
+    color: var(--color-error) !important;
+    font-weight: 600;
+}
+
+/* Fix for search bar jumping */
+.login-signup {
+    min-width: 160px;
+    justify-content: flex-end;
+}
+
+
+
 /* Animations */
 @keyframes fadeInUp {
     from {

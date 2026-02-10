@@ -1,0 +1,391 @@
+/* ==========================================================================
+   1. PARENT LAYOUT & PAGE HEADER
+   ========================================================================== */
+
+.profile-page {
+  padding: 60px 20px;
+  background: radial-gradient(circle at top right, #f8faf9, #f1f5f3);
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.profile-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Extraordinary Header Style */
+.profile-header-modern {
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pre-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary, #2d5e3f);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.title-area h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #1a2e21;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.title-area p {
+  color: #667a6d;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.header-bottom-line {
+  height: 5px;
+  width: 100px;
+  background: linear-gradient(90deg, var(--color-primary, #2d5e3f), transparent);
+  margin-top: 25px;
+  border-radius: 10px;
+}
+
+.settings-circle-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #1a2e21;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.settings-circle-btn:hover {
+  transform: rotate(45deg);
+  background: var(--color-primary, #2d5e3f);
+  color: white;
+}
+
+/* Main Grid Control */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   2. PROFILE IDENTITY CARD (LEFT)
+   ========================================================================== */
+
+.profile-identity-card-premium {
+  background: white;
+  border-radius: 35px;
+  padding: 45px 30px;
+  border: 1px solid rgba(44, 94, 63, 0.06);
+  box-shadow: 0 25px 50px -12px rgba(44, 94, 63, 0.1);
+  position: sticky;
+  top: 40px;
+}
+
+/* The Brand-Logo Squircle */
+.profile-avatar-wrapper-modern {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+}
+
+.avatar-glass-circle {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 45px; /* Extraordinary Squircle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(44, 94, 63, 0.1);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.profile-brand-icon {
+  font-size: 4rem;
+  color: var(--color-primary, #2d5e3f);
+  filter: drop-shadow(0 10px 15px rgba(44, 94, 63, 0.2));
+}
+
+.camera-btn-modern {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background: #1a2e21;
+  color: white;
+  border: 4px solid white;
+  width: 45px;
+  height: 45px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.camera-btn-modern:hover {
+  transform: scale(1.15) rotate(5deg);
+  background: var(--color-primary, #2d5e3f);
+}
+
+.profile-display-name {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #1a2e21;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.role-tag-premium {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 30px;
+  background: #1a2e21;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.identity-stats {
+  border-top: 1px solid #f0f4f2;
+  border-bottom: 1px solid #f0f4f2;
+  padding: 25px 0;
+  margin-bottom: 30px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stat-item svg {
+  font-size: 1.5rem;
+  color: var(--color-primary, #2d5e3f);
+}
+
+.stat-item p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.stat-item span {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.edit-trigger-btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 18px;
+  border: 2px solid #1a2e21;
+  background: transparent;
+  color: #1a2e21;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-trigger-btn:hover, .edit-trigger-btn.active {
+  background: #1a2e21;
+  color: white;
+  box-shadow: 0 10px 25px rgba(26, 46, 33, 0.2);
+}
+
+/* ==========================================================================
+   3. PROFILE DETAILS CARD (RIGHT)
+   ========================================================================== */
+
+.profile-details-card-premium {
+  background: white;
+  border-radius: 35px;
+  padding: 50px;
+  border: 1px solid rgba(44, 94, 63, 0.06);
+  box-shadow: 0 25px 50px -12px rgba(44, 94, 63, 0.1);
+}
+
+.card-section-modern {
+  margin-bottom: 45px;
+}
+
+.section-heading-modern {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.4rem;
+  color: #1a2e21;
+  margin-bottom: 35px;
+  font-weight: 800;
+}
+
+.heading-icon-box {
+  width: 45px;
+  height: 45px;
+  background: #f0fdf4;
+  color: var(--color-primary, #2d5e3f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  font-size: 1.3rem;
+  border: 1px solid rgba(44, 94, 63, 0.1);
+}
+
+.fields-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.premium-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.premium-input-box label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 5px;
+}
+
+/* The "Light Outline" Value Boxes */
+.value-container {
+  background: #f8faf9;
+  padding: 16px 22px;
+  border-radius: 16px;
+  font-weight: 600;
+  color: #334155;
+  border: 1px solid #eef2f0;
+  transition: all 0.3s ease;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+}
+
+.value-container:hover {
+  background: white;
+  border-color: var(--color-primary, #2d5e3f);
+  box-shadow: 0 10px 20px rgba(44, 94, 63, 0.04);
+}
+
+.email-verified {
+  justify-content: space-between;
+  border-left: 5px solid #48bb78;
+}
+
+.verified-check {
+  color: #48bb78;
+  font-size: 1.4rem;
+}
+
+.address-box {
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.full-span {
+  grid-column: span 2;
+}
+
+.premium-footer-status {
+  margin-top: 10px;
+  padding-top: 30px;
+  border-top: 2px dashed #f1f5f3;
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   4. UTILITIES & ANIMATIONS
+   ========================================================================== */
+
+.profile-loader-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  gap: 20px;
+}
+
+.spinner-leaf {
+  font-size: 4rem;
+  color: var(--color-primary, #2d5e3f);
+  animation: leafPulse 2s ease-in-out infinite;
+}
+
+@keyframes leafPulse {
+  0%, 100% { transform: scale(1) rotate(0); opacity: 1; }
+  50% { transform: scale(1.2) rotate(15deg); opacity: 0.7; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-identity-card-premium {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .fields-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-details-card-premium {
+    padding: 30px 20px;
+  }
+  .title-area h1 {
+    font-size: 2.2rem;
+  }
+}

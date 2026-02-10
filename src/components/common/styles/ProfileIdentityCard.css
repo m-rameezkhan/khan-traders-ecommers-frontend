@@ -1,0 +1,111 @@
+/* =========================================
+   PROFILE DETAILS CARD (Right Side)
+   ========================================= */
+
+.profile-details-card-premium {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 45px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 15px 35px rgba(44, 94, 63, 0.06);
+}
+
+.card-section-modern {
+  margin-bottom: 40px;
+}
+
+.section-heading-modern {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  color: #1a2e21;
+  margin-bottom: 25px;
+}
+
+.heading-icon-box {
+  width: 38px;
+  height: 38px;
+  background: #f0fdf4;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+
+.fields-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.premium-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.premium-input-box label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #9ea9a1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-left: 4px;
+}
+
+.value-container {
+  background: #fcfdfc;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #2c3e32;
+  border: 1px solid #edf2ef; /* Beautiful light outline */
+  transition: all 0.2s ease;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.value-container:hover {
+  background: #fff;
+  border-color: var(--color-primary-light);
+  box-shadow: 0 4px 12px rgba(44, 94, 63, 0.04);
+}
+
+.email-verified {
+  justify-content: space-between;
+  border-left: 3px solid #48bb78;
+}
+
+.verified-check {
+  color: #48bb78;
+  font-size: 1.1rem;
+}
+
+.address-box {
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.full-span {
+  grid-column: span 2;
+}
+
+/* Footer Status Area */
+.premium-footer-status {
+  margin-top: 10px;
+  padding-top: 25px;
+  border-top: 1px dashed #e8eee9;
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #a0aec0;
+  font-weight: 600;
+}

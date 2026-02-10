@@ -1,0 +1,305 @@
+/* =========================================
+   ORDER CARD COMPONENT STYLES
+   ========================================= */
+
+/* --- Main Card Container --- */
+.order-card-premium {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 25px rgba(44, 94, 63, 0.06);
+    margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(44, 94, 63, 0.1);
+}
+
+/* --- Index Badge --- */
+.order-index-badge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--color-primary-dark);
+    color: white;
+    padding: 5px 15px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-bottom-right-radius: 15px;
+    z-index: 5;
+}
+
+/* --- Card Header --- */
+.card-top {
+    background: #fafafa;
+    padding: 25px 30px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.order-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+}
+
+.order-date,
+.order-id {
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+/* --- Status Tags --- */
+.status-container {
+    text-align: right;
+}
+
+.status-tag {
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.status-tag.pending {
+    background: #fff8e1;
+    color: #b78103;
+    border: 1px solid #ffe082;
+}
+
+.status-tag.processing {
+    background: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #90caf9;
+}
+
+.status-tag.delivered {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.status-tag.cancelled {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+/* --- Grid Content --- */
+.card-grid-content {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    border-bottom: 1px dashed #eee;
+}
+
+/* Product Section */
+.products-section {
+    padding: 10px 30px;
+    border-right: 1px solid #f0f0f0;
+}
+
+.product-compact-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.product-compact-row:last-child {
+    border-bottom: none;
+}
+
+.item-mini-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    display: block;
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 0.95rem;
+}
+
+.item-qty {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.item-price-end {
+    font-weight: 800;
+    color: var(--color-primary-dark);
+}
+
+/* Shipping Section */
+.shipping-section {
+    padding: 10px 30px;
+    background-color: #fafbfc;
+}
+
+.info-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.address-text {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.phone-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+}
+
+/* --- Footer --- */
+.card-footer-action {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+}
+
+.total-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #999;
+}
+
+.total-value {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--color-primary-dark);
+    padding-left: 10px;
+}
+
+.invoice-btn-modern {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 2px solid var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.invoice-btn-modern:hover {
+    background: var(--color-primary-dark);
+    color: #fff;
+    transform: scale(1.02);
+}
+
+.id-group,
+.status-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* --- Responsive --- */
+@media (max-width: 850px) {
+    .card-grid-content {
+        grid-template-columns: 1fr;
+    }
+
+    .products-section {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .status-container {
+        text-align: left;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .card-top {
+        flex-direction: column;
+    }
+}
+
+@media print {
+
+    /* 1. Global Print Quality Settings */
+    * {
+        /* Standard property for Firefox and modern browsers */
+        print-color-adjust: exact !important;
+        /* Vendor-specific for Chrome, Edge, and Safari */
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    /* 2. Hide everything else (Zero Distraction) */
+    body * {
+        visibility: hidden;
+    }
+
+    /* 3. The Isolated Card Logic */
+    .print-this-only,
+    .print-this-only * {
+        visibility: visible;
+    }
+
+    .print-this-only {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background-color: white !important;
+        padding: 20px;
+        border-radius: 0;
+        /* Flat edges look better on paper */
+    }
+
+    /* 4. Ensure status colors and borders are crisp */
+    .status-pill {
+        border: 1.5px solid currentColor !important;
+        font-weight: bold;
+    }
+
+    /* 5. Clean up buttons and non-printable items */
+    .invoice-btn,
+    .reorder-btn,
+    .orders-header-main,
+    .back-link {
+        display: none !important;
+    }
+}

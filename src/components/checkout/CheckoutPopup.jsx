@@ -31,19 +31,22 @@ const CheckoutPopup = ({ isOpen, onClose, onContinue }) => {
   };
 
   return (
-    <div className="checkout-overlay">
-      <div className="checkout-popup">
+    <div className="checkout-overlay" onClick={onClose}>
+      {/* stopPropagation prevents closing when clicking inside the white box */}
+      <div className="checkout-popup" onClick={(e) => e.stopPropagation()}>
         <button className="close-btn" onClick={onClose}>&times;</button>
         
         <div className="popup-header">
-          <i className="fa-solid fa-truck-fast"></i>
+          <div className="auth-logo-space">
+             <i className="fa-solid fa-leaf"></i>
+          </div>
           <h2>Delivery Details</h2>
-          <p>Tell us where to send your fresh products</p>
+          <p>Fresh products from nature to your door</p>
         </div>
 
         <form onSubmit={handleSubmit} className="checkout-form">
           <div className="input-group">
-            <label>Phone Number *</label>
+            <label><i className="fa-solid fa-phone"></i> Phone Number *</label>
             <input
               type="tel"
               name="phone"
@@ -55,7 +58,7 @@ const CheckoutPopup = ({ isOpen, onClose, onContinue }) => {
           </div>
 
           <div className="input-group">
-            <label>Delivery Address *</label>
+            <label><i className="fa-solid fa-location-dot"></i> Delivery Address *</label>
             <textarea
               name="address"
               placeholder="House #, Street, City..."
@@ -66,7 +69,7 @@ const CheckoutPopup = ({ isOpen, onClose, onContinue }) => {
           </div>
 
           <div className="input-group">
-            <label>Full Name (Optional)</label>
+            <label><i className="fa-solid fa-user"></i> Full Name (Optional)</label>
             <input
               type="text"
               name="name"
@@ -77,12 +80,13 @@ const CheckoutPopup = ({ isOpen, onClose, onContinue }) => {
           </div>
 
           <button type="submit" className="continue-btn">
-            Continue to Summary
+            Confirm Delivery Location
           </button>
         </form>
       </div>
     </div>
   );
+
 };
 
 export default CheckoutPopup;

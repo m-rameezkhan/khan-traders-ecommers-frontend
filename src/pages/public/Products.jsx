@@ -1,40 +1,32 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import ProductCard from "../../components/common/ProductCard";
 import "./styles/product.css";
-import product1 from "../../assets/images/products/fishmeal1.png";
-import product2 from "../../assets/images/products/fishmeal2.png";
-import product3 from "../../assets/images/products/fishmeal3.png";
-
-const dummyProducts = [
-  {
-    _id: "1",
-    name: "Sun Dried Fishmeal",
-    pricePerUnit: 320,
-    unit: "kg",
-    minOrderQty: 10,
-    stockQty: 500,
-    image: product1,
-  },
-  {
-    _id: "2",
-    name: "Processed Fishmeal Bag",
-    pricePerUnit: 15500,
-    unit: "bag",
-    minOrderQty: 1,
-    stockQty: 120,
-    image: product2,
-  },
-  {
-    _id: "3",
-    name: "High Protein Feed Mix",
-    pricePerUnit: 290,
-    unit: "kg",
-    minOrderQty: 20,
-    stockQty: 800,
-    image: product3,
-  },
-];
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        // Replace with your actual API endpoint
+        const response = await axios.get("http://localhost:5000/api/products");
+        setProducts(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to load products. Please try again later.");
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) return <div className="loader">Loading products...</div>;
+  if (error) return <div className="error-message">{error}</div>;
+
   return (
     <section className="products-page">
       <div className="page-header">
@@ -43,9 +35,13 @@ const Products = () => {
       </div>
 
       <div className="products-grid">
-        {dummyProducts.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))}
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))
+        ) : (
+          <p>No products found.</p>
+        )}
       </div>
     </section>
   );
