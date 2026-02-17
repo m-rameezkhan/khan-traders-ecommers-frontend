@@ -5,7 +5,7 @@ import {
   IoAddOutline, IoPencil, IoTrash, IoCubeOutline,
   IoSearchOutline, IoSyncOutline
 } from "react-icons/io5";
-import "./styles/inventory.css";
+import "./styles/Inventory.css";
 import ProductModal from "../../components/admin/ProductModal";
 
 const CACHE_KEY = "kt_inventory_cache";
