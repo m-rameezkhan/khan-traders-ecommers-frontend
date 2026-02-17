@@ -1,0 +1,127 @@
+/* Sidebar.css */
+.sidebar-container {
+  background: #0f291e; /* Very Dark Green (Almost Black) */
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 25px 15px;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  transition: all 0.4s ease;
+}
+
+/* Header & Logo */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+.logo-icon {
+  background: #38a169;
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center; justify-content: center;
+  border-radius: 10px;
+  font-weight: 900;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s;
+}
+
+.brand-text h2 { margin: 0; font-size: 1.1rem; letter-spacing: 1px; color: white; }
+.brand-text span { font-size: 0.7rem; color: #8ba89a; letter-spacing: 2px; }
+
+/* Navigation */
+.sidebar-nav { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  transform: translateX(4px);
+}
+
+.nav-link.active {
+  background: linear-gradient(90deg, #1b4d3e 0%, #14382d 100%);
+  color: #4ade80; /* Light Green Text */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-icon { font-size: 1.4rem; display: flex; align-items: center; }
+.nav-label { font-size: 0.95rem; white-space: nowrap; }
+
+/* Active Indicator Line */
+.active-indicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: #4ade80;
+  border-radius: 4px 0 0 4px;
+  display: none;
+}
+
+/* Footer */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  width: 100%;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.logout-btn:hover { background: #ef4444; color: white; }
+
+/* Collapsed State Overrides */
+.sidebar-container.collapsed .brand-text,
+.sidebar-container.collapsed .nav-label,
+.sidebar-container.collapsed .active-indicator,
+.sidebar-container.collapsed .logout-btn span {
+  display: none;
+}
+
+.sidebar-container.collapsed .sidebar-header { padding-left: 0; justify-content: center; }
+.sidebar-container.collapsed .nav-link { justify-content: center; padding: 12px 0; }
+.sidebar-container.collapsed .nav-link:hover { transform: none; background: rgba(255,255,255,0.1); }
+.sidebar-container.collapsed .logout-btn { justify-content: center; padding: 12px 0; }
+
+
+/* FIX: Only show indicator when the parent link is active */
+.nav-link.active .active-indicator {
+  display: block;
+}

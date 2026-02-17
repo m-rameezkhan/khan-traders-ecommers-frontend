@@ -1,0 +1,123 @@
+.om-summary-card {
+  display: flex;
+  align-items: center;
+  /* Removed justify-content: space-between to use flex-basis control */
+  background: white;
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.om-summary-card:hover {
+  transform: translateX(5px);
+  border-color: #1b4d3e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.om-card-section.identity {
+  flex: 0 0 35%; /* Fixed 35% width */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+/* --- Section 1: Customer (Fixed Width) --- */
+.om-card-section.customer { 
+  flex: 0 0 35%; /* Occupies exactly 35% of the card */
+  display: flex; 
+  align-items: center; 
+  gap: 15px; 
+}
+
+/* --- Section 2: Details (Fixed Width & Centered) --- */
+.om-card-section.details { 
+  flex: 0 0 40%; /* Occupies exactly 40% of the card */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; /* Centers the stats in the middle section */
+  gap: 30px; /* Space between Date and Amount */
+}
+
+/* --- Section 3: Status (Pushes to Right) --- */
+.om-card-section.status-pill { 
+  flex: 1; /* Takes up remaining 25% */
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; /* Pushes content to the far right */
+  gap: 15px; 
+}
+
+/* --- Inner Elements --- */
+.om-status-dot { 
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%; 
+  flex-shrink: 0; /* Prevents dot from squishing */
+}
+
+.om-info {
+  min-width: 0; /* Necessary for text-overflow to work */
+}
+
+.om-label { 
+  font-size: 0.65rem; 
+  color: #94a3b8; 
+  font-weight: 700; 
+  display: block; 
+  text-transform: uppercase;
+}
+
+.om-info h4 { 
+  margin: 0; 
+  color: #1e293b; 
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds "..." if name is too long for the 35% width */
+}
+
+.om-stat { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  color: #64748b; 
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.om-badge {
+  padding: 4px 12px;
+  border: 1.5px solid;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-align: center;
+  min-width: 90px; /* Keeps badge size consistent */
+}
+
+.om-arrow {
+  color: #cbd5e1;
+  font-size: 1.2rem;
+}
+
+
+/* --- Responsive Fix --- */
+@media (max-width: 900px) {
+  .om-summary-card {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 1.2rem;
+  }
+  .om-card-section.customer,
+  .om-card-section.details {
+    flex: 0 0 100%;
+    justify-content: flex-start;
+  }
+  .om-card-section.status-pill {
+    flex: 0 0 100%;
+    justify-content: space-between;
+  }
+}
+
+

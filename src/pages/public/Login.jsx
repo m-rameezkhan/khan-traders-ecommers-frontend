@@ -18,10 +18,24 @@ const Login = () => {
     setLoading(true);
 
     try {
-      // Send 'identifier' to match your new backend controller logic
-      await login({ identifier, password });
-      showToast("Welcome back!");
-      navigate("/");
+      // 1. Call your login API
+      const response = await login({ identifier, password });
+
+      // 2. Extract data from your API response structure
+      const { token, user } = response;
+
+      // 3. Save to localStorage
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user)); // Must stringify the object
+
+      showToast(`Welcome back, ${user.name}!`);
+
+      // 4. Role-Based Redirection
+      if (user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
+      }
     } catch (err) {
       showToast(err.message || "Login failed", "error");
     } finally {

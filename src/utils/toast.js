@@ -1,20 +1,20 @@
+import "./toast.css"
+
 export const showToast = (message, type = "success") => {
   const container = document.getElementById("toast-container");
   if (!container) return;
 
-  // Create toast element
   const toast = document.createElement("div");
   toast.className = `message ${type}`;
   toast.innerText = message;
 
-  // Add to container
   container.appendChild(toast);
 
-  // Remove after 3 seconds
+  // 3000ms matches the CSS 'progress' animation
   setTimeout(() => {
-    toast.style.animation = "slideOut 0.3s forwards";
+    toast.style.animation = "slideOut 0.4s forwards";
     setTimeout(() => {
       toast.remove();
-    }, 300);
-  }, 3000);
+    }, 400);
+  }, 2000);
 };

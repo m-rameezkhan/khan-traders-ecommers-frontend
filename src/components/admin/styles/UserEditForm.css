@@ -1,0 +1,165 @@
+/* UserEditForm.css */
+:root {
+  --primary: #1b4d3e;
+  --primary-light: #f0fdf4;
+  --danger: #ef4444;
+  --text-main: #0f172a;
+  --text-sub: #64748b;
+  --border-color: #e2e8f0;
+  --input-bg: #f8fafc;
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header Design */
+.form-header {
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-text h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.header-text p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+/* Toggle Buttons */
+.btn-edit, .btn-cancel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid var(--border-color);
+}
+
+.btn-edit { background: #fff; color: var(--primary); }
+.btn-edit:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.btn-cancel { background: #fef2f2; color: var(--danger); border-color: #fee2e2; }
+.btn-cancel:hover { background: var(--danger); color: #fff; }
+
+/* Form Body & Grid */
+.form-body { padding: 32px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group.full-width { grid-column: 1 / -1; }
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* The Professional Input Transition */
+.custom-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid transparent; /* Hidden by default */
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: var(--input-bg);
+  transition: all 0.3s ease;
+}
+
+/* State: Viewing (Clean & Flat) */
+.is-viewing .custom-input {
+  background: transparent;
+  padding-left: 0;
+  font-weight: 500;
+  pointer-events: none; /* User can't even click */
+}
+
+/* State: Editing (The "Activation" UI) */
+.is-editing .form-card {
+  border-color: var(--primary);
+  box-shadow: 0 20px 25px -5px rgba(27, 77, 62, 0.08);
+}
+
+.is-editing .custom-input {
+  background: #fff;
+  border-color: var(--border-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.is-editing .custom-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(27, 77, 62, 0.1);
+}
+
+/* Footer & Save Button */
+.form-footer {
+  padding: 20px 32px;
+  background: var(--primary-light);
+  border-top: 1px solid #dcfce7;
+  display: flex;
+  justify-content: flex-end;
+  animation: footerReveal 0.4s ease;
+}
+
+@keyframes footerReveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-save {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(27, 77, 62, 0.2);
+}
+
+.btn-save:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(27, 77, 62, 0.3);
+}
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .btn-edit, .btn-cancel { width: 100%; justify-content: center; }
+}

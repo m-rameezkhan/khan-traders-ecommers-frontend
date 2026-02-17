@@ -1,0 +1,95 @@
+/* toast.css */
+
+#toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none; /* Allows clicking things behind the container */
+}
+
+.message {
+  pointer-events: auto; /* Re-enable clicking for the toast itself */
+  position: relative;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Status-Specific Styles */
+
+/* Success */
+.message.success {
+  border-left: 4px solid #10b981;
+  color: #064e3b;
+}
+.message.success::before { content: '✅'; font-size: 1.1rem; }
+
+/* Error */
+.message.error {
+  border-left: 4px solid #ef4444;
+  color: #7f1d1d;
+}
+.message.error::before { content: '❌'; font-size: 1.1rem; }
+
+/* Warning */
+.message.warning {
+  border-left: 4px solid #f59e0b;
+  color: #78350f;
+}
+.message.warning::before { content: '⚠️'; font-size: 1.1rem; }
+
+/* Info */
+.message.info {
+  border-left: 4px solid #3b82f6;
+  color: #1e3a8a;
+}
+.message.info::before { content: 'ℹ️'; font-size: 1.1rem; }
+
+/* The Progress Bar Effect */
+.message::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: rgba(0,0,0,0.1);
+  animation: progress 3s linear forwards;
+}
+
+/* Color match the progress bar */
+.message.success::after { background: #10b981; }
+.message.error::after { background: #ef4444; }
+.message.warning::after { background: #f59e0b; }
+.message.info::after { background: #3b82f6; }
+
+/* Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50%) scale(0.9); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes slideOut {
+  from { opacity: 1; transform: translateX(0) scale(1); }
+  to { opacity: 0; transform: translateX(100%) scale(0.9); }
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}

@@ -1,0 +1,174 @@
+/* UserIdentityCard.css */
+
+.identity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  border: 1px solid #f1f5f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.identity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+}
+
+/* Glassmorphism Background Decoration */
+.identity-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(27, 77, 62, 0.05) 0%, rgba(74, 222, 128, 0.05) 100%);
+  z-index: 0;
+}
+
+/* Avatar Styling */
+.aud-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 30px; /* Squircle look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  z-index: 1;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+  border: 4px solid #fff;
+}
+
+.aud-avatar.manager {
+  background: linear-gradient(135deg, #1b4d3e 0%, #34d399 100%);
+}
+
+.aud-avatar.customer {
+  background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+}
+
+/* Typography */
+.identity-card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+}
+
+.aud-email {
+  margin: 4px 0 16px 0;
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Badges Layout */
+.aud-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.badge-role, 
+.badge-status {
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Role Colors */
+.badge-role.manager {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.badge-role.customer {
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+/* Status Colors */
+.badge-status.active {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #10b981;
+}
+
+.badge-status.restricted {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #f87171;
+}
+
+/* Joined Date */
+.aud-joined-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 25px;
+}
+
+.aud-joined-date svg {
+  font-size: 1rem;
+}
+
+/* Stats Section Styling */
+.stats-section {
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.stats-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  transition: background 0.2s ease;
+}
+
+.stat-row:hover {
+  background: #f1f5f9;
+}
+
+.stat-row span {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.stat-row strong {
+  font-size: 0.95rem;
+  color: #0f172a;
+  font-weight: 700;
+}
