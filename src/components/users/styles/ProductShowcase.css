@@ -1,0 +1,152 @@
+.visual-showcase {
+    position: relative;
+    background: #000;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+    height: 550px; /* Fixed height for the showcase area */
+}
+
+.image-stage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* This makes the image fill the entire div, cropping if necessary */
+.main-product-img-fill {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center; /* Keeps the center of the product visible */
+    transition: transform 0.8s ease;
+}
+
+.image-stage:hover .main-product-img-fill {
+    transform: scale(1.03); /* Very subtle zoom for feel */
+}
+
+/* --- Universal Premium Button (Visible on any background) --- */
+.premium-back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    /* Glassmorphism Logic */
+    background: rgba(255, 255, 255, 0.75); /* Slight white tint */
+    backdrop-filter: blur(12px) saturate(180%); /* Intense blur for content separation */
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    
+    /* Border & Shadow for Visibility */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), /* Soft shadow for light backgrounds */
+                0 2px 8px rgba(0, 0, 0, 0.05);
+    
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #1b4d3e; /* Deep green for high contrast on light/glass */
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.premium-back-btn:hover {
+    background: #1b4d3e;
+    color: #ffffff;
+    border-color: #1b4d3e;
+    transform: translateX(-5px) translateY(-2px);
+    box-shadow: 0 12px 24px rgba(27, 77, 62, 0.25);
+}
+
+/* Icon refinement inside the button */
+.premium-back-btn svg {
+    font-size: 1.1rem;
+    stroke-width: 2.5px; /* Thicker icon for clarity */
+}
+
+.expand-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    background: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.status-badge-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stock-badge, .premium-badge {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.stock-badge.in { background: #dcfce7; color: #166534; }
+.stock-badge.out { background: #fee2e2; color: #991b1b; }
+.premium-badge { background: #1b4d3e; color: white; }
+
+/* --- Fullscreen Lightbox --- */
+.image-lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox-img-simple {
+    max-width: 95%;
+    max-height: 90%;
+    object-fit: contain; /* Fullscreen should always show the full product */
+    border-radius: 8px;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

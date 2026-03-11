@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import "./styles/productCard.css";
 import { showToast } from "../../utils/toast.js";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+
+    const navigate = useNavigate();
     const { addToCart } = useCart();
     // Initialize quantity at minimum order amount
     const [qty, setQty] = useState(product.minOrderQty);

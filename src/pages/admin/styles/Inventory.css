@@ -212,3 +212,40 @@
 .stock-info-cell { display: flex; align-items: baseline; gap: 4px; }
 .stock-count { font-weight: 800; color: #1e293b; font-size: 1rem; }
 .stock-unit { font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; }
+
+
+.btn-detail-minimal {
+    background: #f0f7f4;
+    color: #1b4d3e;
+    border: 1px solid #1b4d3e33;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-detail-minimal:hover {
+    background: #1b4d3e;
+    color: white;
+}
+
+.btn-delete-minimal {
+    background: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #e53e3e33;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.btn-delete-minimal:hover {
+    background: #e53e3e;
+    color: white;
+}

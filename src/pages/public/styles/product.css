@@ -7,13 +7,13 @@
 }
 
 /* Page Header with Decorative Elements */
-.page-header {
+.product-page-header {
   text-align: center;
   margin-bottom: 4rem;
   position: relative;
 }
 
-.page-header h2 {
+.product-page-header h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 3rem;
   font-weight: 800;
@@ -23,7 +23,7 @@
   letter-spacing: -1px;
 }
 
-.page-header p {
+.product-page-header p {
   font-family: 'Poppins', sans-serif;
   color: var(--color-text-light);
   font-size: 1.1rem;
@@ -32,7 +32,7 @@
 }
 
 /* Subtle underline for the header description */
-.page-header p::after {
+.product-page-header p::after {
   content: "";
   display: block;
   width: 50%;
@@ -72,10 +72,10 @@
   .products-page {
     padding: 40px 1.5rem;
   }
-  .page-header {
+  .product-page-header {
     margin: 0px;
   }
-  .page-header h2 {
+  .product-page-header h2 {
     font-size: 2.2rem;
   }
   

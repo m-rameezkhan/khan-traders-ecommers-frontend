@@ -7,9 +7,9 @@ const StatusCard = ({
   setStatus, 
   onSave, 
   updating, 
-  initialStatus, // Add this
-  deliveryFee,    // Add this (original from DB)
-  newDeliveryFee  // Add this (current state)
+  initialStatus,
+  deliveryFee,
+  newDeliveryFee
 }) => {
   const statusOptions = [
     { value: "pending", label: "Pending Approval" },
@@ -20,12 +20,10 @@ const StatusCard = ({
     { value: "cancelled", label: "Cancelled / Void" },
   ];
 
-  // Logic: Check if status changed OR delivery fee changed
-  const isStatusChanged = status !== initialStatus;
-  const isFeeChanged = Number(newDeliveryFee) !== Number(deliveryFee);
-  const hasChanges = isStatusChanged || isFeeChanged;
+  const hasChanges = (status !== initialStatus) || (Number(newDeliveryFee) !== Number(deliveryFee));
 
   return (
+    /* Dynamic class added to the main container for global theme shifting */
     <div className={`process-card status-theme-${status}`}>
       <div className="process-header">
         <div className="status-indicator-ring">
@@ -44,7 +42,11 @@ const StatusCard = ({
             disabled={updating}
           >
             {statusOptions.map(opt => (
-              <option key={opt.value} value={opt.value}>
+              <option 
+                key={opt.value} 
+                value={opt.value} 
+                className={`opt-${opt.value}`} // Unique class for each option
+              >
                 {opt.label}
               </option>
             ))}
@@ -55,23 +57,19 @@ const StatusCard = ({
       <button 
         className={`confirm-btn ${updating ? 'saving' : ''} ${!hasChanges ? 'btn-disabled' : ''}`} 
         onClick={onSave} 
-        disabled={updating || !hasChanges} // Disabled if updating OR no changes
+        disabled={updating || !hasChanges}
       >
         {updating ? (
-          <>
-            <IoSyncOutline className="spin" /> Updating Database...
-          </>
+          <><IoSyncOutline className="spin" /> Updating Database...</>
         ) : (
-          <>
-            <IoCloudUploadOutline /> {hasChanges ? "Save Changes" : "No Changes"}
-          </>
+          <><IoCloudUploadOutline /> {hasChanges ? "Save Changes" : "Update Status"}</>
         )}
       </button>
 
       <p className="status-help-text">
         {hasChanges 
-          ? "* You have unsaved changes." 
-          : "* Updating the status will trigger a notification to the customer."}
+          ? "⚠️ You have unsaved modifications." 
+          : "* Customer will be notified of status updates."}
       </p>
     </div>
   );

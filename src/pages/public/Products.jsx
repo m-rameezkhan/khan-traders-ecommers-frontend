@@ -29,7 +29,7 @@ const Products = () => {
 
   return (
     <section className="products-page">
-      <div className="page-header">
+      <div className="product-page-header">
         <h2>Our Products</h2>
         <p>Premium quality fishmeal and feed products</p>
       </div>

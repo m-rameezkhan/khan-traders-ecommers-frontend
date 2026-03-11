@@ -1,0 +1,264 @@
+.info-blueprint {
+    padding: 30px; /* Reduced from 40px */
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* Tightened the gap significantly */
+}
+
+.info-header {
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 15px;
+}
+
+.category-capsule {
+    color: #1b4d3e;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 1.2px;
+    background: #f0fdf4;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.product-title {
+    font-size: 1.8rem; /* Slightly smaller for professional look */
+    color: #0f172a;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.meta-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rating-pill { color: #f59e0b; font-weight: 700; font-size: 0.8rem; }
+.review-count { color: #94a3b8; font-weight: 500; margin-left: 4px; }
+
+.sku-tag { 
+    font-size: 0.7rem; 
+    color: #94a3b8; 
+    border-left: 1px solid #e2e8f0;
+    padding-left: 12px;
+}
+
+/* --- Compact Pricing --- */
+.pricing-architecture {
+    padding: 12px 0;
+}
+
+.price-stack {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.currency { font-size: 1rem; font-weight: 700; color: #1b4d3e; }
+.amount { font-size: 2rem; font-weight: 800; color: #0f172a; }
+.per-unit { color: #64748b; font-size: 0.9rem; }
+
+/* --- Description Box --- */
+.product-description-box {
+    border: 1px solid #f1f5f9;
+    padding: 15px;
+    border-radius: 12px;
+    background: #fafafa;
+}
+
+.section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.description-text {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.5;
+}
+
+/* --- Trust Badges --- */
+.trust-row {
+    display: flex;
+    gap: 10px;
+}
+
+.trust-badge {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+    border: 1px solid #f1f5f9;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #1b4d3e;
+}
+
+
+
+
+
+/* --- Compact Checkout --- */
+.checkout-blueprint {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Selection Card (The "Glass" Box) --- */
+.selection-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+/* --- Modern Stepper --- */
+.modern-stepper {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 4px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.step-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: #f1f5f9;
+    color: #1b4d3e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.step-btn:hover:not(:disabled) {
+    background: #1b4d3e;
+    color: white;
+}
+
+.step-input {
+    padding: 0 16px;
+    text-align: center;
+}
+
+.step-number {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.step-unit {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-left: 3px;
+}
+
+/* --- Price Display --- */
+.price-summary-section {
+    text-align: right;
+}
+
+.total-price-display {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1b4d3e;
+}
+
+/* --- Action Buttons --- */
+.button-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-primary-add {
+    width: 100%;
+    height: 56px;
+    background: #1b4d3e;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(27, 77, 62, 0.15);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-primary-add:hover {
+    background: #143a2f;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(27, 77, 62, 0.25);
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+}
+
+/* --- Secondary Actions --- */
+.secondary-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-secondary-view {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-secondary-view:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.min-order-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #94a3b8;
+    background: #f1f5f9;
+    padding: 4px 12px;
+    border-radius: 100px;
+}

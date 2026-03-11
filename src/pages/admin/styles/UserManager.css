@@ -56,6 +56,95 @@
   gap: 12px;
 }
 
+/* um-icon-btn.css */
+/* Refresh Button start*/
+.um-icon-btn {
+  /* Layout & Sizing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  
+  /* Styling */
+  background: #ffffff;
+  color: #64748b; /* Slate-500 */
+  border: 1px solid #e2e8f0;
+  border-radius: 10px; /* Modern "Squircle" */
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover State */
+.um-icon-btn:hover:not(:disabled) {
+  background: #f8fafc;
+  color: #1b4d3e; /* Matches your theme primary */
+  border-color: #1b4d3e;
+  box-shadow: 0 4px 6px -1px rgba(27, 77, 62, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Active/Click State */
+.um-icon-btn:active:not(:disabled) {
+  transform: translateY(0);
+  background: #f0fdf4;
+}
+
+/* Disabled State */
+.um-icon-btn:disabled {
+  background: #f1f5f9;
+  color: #cbd5e1;
+  cursor: not-allowed;
+  border-color: #e2e8f0;
+}
+
+/* Icon Sizing */
+.um-icon-btn svg {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+/* The Professional Spinning Animation */
+.um-icon-btn.spinning svg {
+  animation: rotateRefresh 0.8s infinite cubic-bezier(0.65, 0, 0.35, 1);
+  color: #1b4d3e;
+}
+
+/* Keyframes for a "snappy" spin */
+@keyframes rotateRefresh {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Optional: Tooltip feel (using data-attribute) */
+.um-icon-btn::after {
+  content: "Refresh";
+  position: absolute;
+  bottom: -35px;
+  background: #1e293b;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.um-icon-btn:hover::after {
+  opacity: 1;
+  bottom: -30px;
+}
+/* Refresh Button start*/
+
 /* Table Style Stack */
 .um-card-stack {
   background: white;

@@ -1,3 +1,4 @@
+// User Components
 import { Routes, Route } from "react-router-dom";
 import Login from "../pages/public/Login";
 import Signup from "../pages/public/Signup";
@@ -8,6 +9,7 @@ import Checkout from "../pages/public/Checkout";
 import OrderSuccess from "../pages/public/OrderSuccess";
 import Orders from "../pages/public/Orders";
 import UserProfile from "../pages/public/UserProfile";
+import ProductDetails from "../pages/public/ProductDetailsPage";
 
 // Admin Components
 import AdminDashboard from "../pages/admin/AdminDashboard";
@@ -16,11 +18,14 @@ import ProductManager from "../pages/admin/Inventory";
 import UserManager from "../pages/admin/UserManager";
 import OrderManager from "../pages/admin/OrderManager";
 import AddProduct from "../pages/admin/AddProduct";
+import AdminOrderDetail from "../pages/admin/AdminOrderDetail";
+import AdminUserDetail from "../pages/admin/AdminUserDetail";
+import EditProduct from "../pages/admin/EditProduct";
+import AdminSettings from "../pages/admin/AdminSettings";
 
 // Route Guards
 import { PrivateRoute, AdminRoute } from "./PrivateRoute";
-import AdminOrderDetail from "../pages/admin/AdminOrderDetail";
-import AdminUserDetail from "../pages/admin/AdminUserDetail";
+
 
 export default function AppRoutes() {
   return (
@@ -34,6 +39,7 @@ export default function AppRoutes() {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/order-success" element={<OrderSuccess />} />
       <Route path="/user-profile" element={<UserProfile />} />
+      <Route path="/Product/:id" element={<ProductDetails />} />
 
       {/* Standard Protected Routes (Customers & Admins) */}
       <Route element={<PrivateRoute />}>
@@ -50,6 +56,8 @@ export default function AppRoutes() {
           <Route path="inventory/addProduct" element={<AddProduct />} />
           <Route path="orders/:id" element={<AdminOrderDetail />} />
           <Route path="users/:id" element={<AdminUserDetail />} />
+          <Route path="/admin/inventory/:id" element={<EditProduct />} />
+          <Route path="settings" element={<AdminSettings />} />
         </Route>
       </Route>
     </Routes>
