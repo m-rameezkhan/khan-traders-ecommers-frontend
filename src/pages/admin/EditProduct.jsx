@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { IoArrowBackOutline, IoCloudUploadOutline, IoSyncOutline, IoSaveOutline } from "react-icons/io5";
+import { IoArrowBackOutline, IoCloudUploadOutline, IoSyncOutline, IoSaveOutline, IoStarOutline } from "react-icons/io5";
 import { showToast } from "../../utils/toast"; 
 import "./styles/EditProduct.css"; 
 
@@ -16,7 +16,6 @@ const EditProduct = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Mongoose Schema Units
   const unitOptions = ["kg", "bag", "piece", "ton", "liter", "box", "pack", "bottle", "gallon", "meter", "yard", "foot", "inch"];
 
   const handleFileChange = (e) => {
@@ -38,10 +37,13 @@ const EditProduct = () => {
     formData.append("description", form.description.value);
     formData.append("pricePerUnit", form.pricePerUnit.value);
     formData.append("unit", form.unit.value);
-    formData.append("category", form.category.value); // Added category
+    formData.append("category", form.category.value);
     formData.append("stockQty", form.stockQty.value);
     formData.append("minOrderQty", form.minOrderQty.value);
+    
+    // --- Functional Toggles ---
     formData.append("isActive", form.isActive.checked);
+    formData.append("isFeatured", form.isFeatured.checked);
     
     if (selectedFile) formData.append("image", selectedFile);
 
@@ -102,9 +104,18 @@ const EditProduct = () => {
               </div>
               <input type="file" ref={fileInputRef} onChange={handleFileChange} hidden accept="image/*" />
 
-              <div className="status-toggle-box visible-border">
-                <input type="checkbox" id="isActive" name="isActive" defaultChecked={product.isActive} />
-                <label htmlFor="isActive">Active on Store</label>
+              {/* Status Toggles Section */}
+              <div className="toggles-wrapper" style={{display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '15px'}}>
+                <div className="status-toggle-box visible-border">
+                  <input type="checkbox" id="isActive" name="isActive" defaultChecked={product.isActive} />
+                  <label htmlFor="isActive">Active on Store</label>
+                </div>
+
+                {/* --- Added isFeatured Checkbox --- */}
+                <div className="status-toggle-box visible-border featured-toggle">
+                  <input type="checkbox" id="isFeatured" name="isFeatured" defaultChecked={product.isFeatured} />
+                  <label htmlFor="isFeatured">Mark as Featured</label>
+                </div>
               </div>
             </div>
 
@@ -114,7 +125,6 @@ const EditProduct = () => {
                 <input name="name" type="text" className="visible-border" defaultValue={product.name} required />
               </div>
 
-              {/* Added Category Field */}
               <div className="input-group">
                 <label>Category</label>
                 <input name="category" type="text" className="visible-border" defaultValue={product.category || "Fishmeal"} required />

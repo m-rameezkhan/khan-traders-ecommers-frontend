@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   IoAddOutline, IoTrash, IoCubeOutline,
-  IoSearchOutline, IoSyncOutline, IoEyeOutline
+  IoSearchOutline, IoSyncOutline, IoEyeOutline, IoStar
 } from "react-icons/io5";
 import "./styles/Inventory.css";
 
 const CACHE_KEY = "kt_inventory_cache";
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/products`;
+const API_PRODUCT_URL = `${import.meta.env.VITE_API_URL}/api/products`;
 
 const InventoryList = () => {
   const navigate = useNavigate();
@@ -16,16 +16,22 @@ const InventoryList = () => {
     const saved = localStorage.getItem(CACHE_KEY);
     return saved ? JSON.parse(saved) : [];
   });
-  
+
   const [loading, setLoading] = useState(products.length === 0);
   const [searchTerm, setSearchTerm] = useState("");
 
   const fetchProducts = useCallback(async (isRefresh = false) => {
     try {
       if (isRefresh) setLoading(true);
-      const response = await axios.get(API_BASE_URL);
-      const productData = Array.isArray(response.data) ? response.data : response.data.products || [];
+      const token = localStorage.getItem("token"); // Ensure token is defined
       
+      const response = await axios.get(`${API_PRODUCT_URL}?admin=true`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const productData = Array.isArray(response.data) ? response.data : response.data.products || [];
+
       setProducts(productData);
       localStorage.setItem(CACHE_KEY, JSON.stringify(productData));
     } catch (error) {
@@ -44,7 +50,7 @@ const InventoryList = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`${API_BASE_URL}/delete-item/${id}`, {
+      await axios.delete(`${API_PRODUCT_URL}/delete-item/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -67,7 +73,7 @@ const InventoryList = () => {
         <div className="header-title">
           <div className="title-icon-box"><IoCubeOutline /></div>
           <div>
-            <h1>Inventory</h1>
+            <h1>Inventory Management</h1>
             <p>Total Products: {products.length}</p>
           </div>
         </div>
@@ -110,24 +116,28 @@ const InventoryList = () => {
                   <div className="item-meta">
                     <img src={item.image || "https://via.placeholder.com/40"} alt={item.name} />
                     <div>
-                      <h4 className="item-name">{item.name}</h4>
+                      <h4 className="item-name">
+                        {item.name}
+                        {/* Featured Star Badge */}
+                        {item.isFeatured && <IoStar className="featured-star-icon" title="Featured on Homepage" />}
+                      </h4>
                       <span className="item-sku">SKU-{item._id.slice(-4).toUpperCase()}</span>
                     </div>
                   </div>
                 </td>
                 <td><span className="cat-pill">{item.category || "General"}</span></td>
-                <td><span className="item-price">Rs. {item.pricePerUnit}</span></td>
-                <td><span className="stock-count">{item.stockQty} {item.unit}</span></td>
+                <td><span className="item-price">Rs. {item.pricePerUnit?.toLocaleString('en-US')}</span></td>
+                <td><span className="stock-count">{item.stockQty?.toLocaleString('en-US')} {item.unit}</span></td>
                 <td>
+                  {/* Better wording for Status based on isActive */}
                   <span className={`status-tag ${item.isActive ? 'in-stock' : 'out-of-stock'}`}>
-                    {item.isActive ? 'Live' : 'Hidden'}
+                    {item.isActive ? 'Published' : 'Draft'}
                   </span>
                 </td>
                 <td className="text-right">
                   <div className="action-button-group">
-                    {/* Updated to Detail Navigation */}
-                    <button 
-                      className="btn-detail-minimal" 
+                    <button
+                      className="btn-detail-minimal"
                       onClick={() => navigate(`/admin/inventory/${item._id}`, { state: { product: item } })}
                     >
                       <IoEyeOutline /> <span>Details</span>

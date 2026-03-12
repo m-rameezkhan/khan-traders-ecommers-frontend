@@ -4,7 +4,7 @@ import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
 import { showToast } from "../../utils/toast";
 import EditInfoModal from "../../components/common/EditInfoModal";
-import { IoArrowBack, IoAlertCircleOutline } from "react-icons/io5"; 
+import { IoArrowBack, IoAlertCircleOutline, IoSyncOutline } from "react-icons/io5"; 
 import "./styles/checkout.css";
 
 const Checkout = () => {
@@ -17,9 +17,10 @@ const Checkout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [backendError, setBackendError] = useState(""); 
   
-  // NEW: State for Dynamic Delivery Fee
-  const [deliveryCharge, setDeliveryCharge] = useState(250); // Fallback to 250
+  // States for Delivery and Submission
+  const [deliveryCharge, setDeliveryCharge] = useState(250);
   const [isFetchingFee, setIsFetchingFee] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false); // NEW: Submission state
 
   const [editableInfo, setEditableInfo] = useState({
     name: "",
@@ -27,7 +28,7 @@ const Checkout = () => {
     address: "",
   });
 
-  // 1. Fetch Dynamic Delivery Fee
+  // Fetch Dynamic Delivery Fee
   useEffect(() => {
     const fetchFee = async () => {
       try {
@@ -65,6 +66,7 @@ const Checkout = () => {
   const grandTotal = subtotal + deliveryCharge;
 
   const handlePlaceOrder = async () => {
+    if (isSubmitting) return; // Prevent extra clicks
     setBackendError(""); 
 
     if (!editableInfo.phone || !editableInfo.address) {
@@ -73,6 +75,7 @@ const Checkout = () => {
     }
 
     try {
+      setIsSubmitting(true); // START LOADING
       const orderPayload = {
         deliveryAddress: editableInfo.address,
         phone: editableInfo.phone,
@@ -103,9 +106,11 @@ const Checkout = () => {
         navigate("/order-success", { replace: true });
       } else {
         setBackendError(data.message || "Failed to place order");
+        setIsSubmitting(false); // STOP LOADING ON ERROR
       }
     } catch (error) {
       setBackendError("Server connection lost. Please try again.");
+      setIsSubmitting(false); // STOP LOADING ON ERROR
     }
   };
 
@@ -132,11 +137,11 @@ const Checkout = () => {
                     <div className="item-details">
                       <h4>{item.name}</h4>
                       <p className="item-qty">
-                        {item.quantity} {item.unit} × Rs {item.pricePerUnit}
+                        {item.quantity} {item.unit} × Rs {item.pricePerUnit.toLocaleString('en-US')}
                       </p>
                     </div>
                     <div className="item-total-price">
-                      Rs {item.pricePerUnit * item.quantity}
+                      Rs {(item.pricePerUnit * item.quantity).toLocaleString('en-US')}
                     </div>
                   </div>
                 ))}
@@ -159,14 +164,12 @@ const Checkout = () => {
                     <span className="label">Name:</span>
                     <p className="user-name">{editableInfo.name || "Guest User"}</p>
                   </div>
-
                   <div className="info-row-detail">
                     <span className="label">Phone:</span>
                     <span className={`value ${!editableInfo.phone ? "error-text" : ""}`}>
                       {editableInfo.phone || "Not provided"}
                     </span>
                   </div>
-
                   <div className="info-row-detail">
                     <span className="label">Address:</span>
                     <span className={`value ${!editableInfo.address ? "error-text" : ""}`}>
@@ -179,20 +182,19 @@ const Checkout = () => {
               <div className="price-breakdown">
                 <div className="price-row">
                   <span>Items Subtotal</span>
-                  <span>Rs {subtotal.toLocaleString()}</span>
+                  <span>Rs {subtotal.toLocaleString('en-US')}</span>
                 </div>
                 <div className="price-row">
                   <div className="label-with-subtext">
                     <span>Delivery Fee</span>
                     <small>Standard Rate</small>
                   </div>
-                  {/* Show dots while fetching to avoid layout jump */}
-                  <span>{isFetchingFee ? "..." : `Rs ${deliveryCharge}`}</span>
+                  <span>{isFetchingFee ? "..." : `Rs ${deliveryCharge.toLocaleString('en-US')}`}</span>
                 </div>
                 <hr />
                 <div className="price-row total">
                   <span>Grand Total</span>
-                  <span>Rs {isFetchingFee ? "..." : grandTotal.toLocaleString()}</span>
+                  <span>Rs {isFetchingFee ? "..." : grandTotal.toLocaleString('en-US')}</span>
                 </div>
               </div>
 
@@ -206,9 +208,13 @@ const Checkout = () => {
               <button 
                 className="place-order-btn" 
                 onClick={handlePlaceOrder}
-                disabled={isFetchingFee} // Disable if fee hasn't loaded
+                disabled={isFetchingFee || isSubmitting} // DISBALE ON LOADING OR SUBMITTING
               >
-                {isFetchingFee ? "Loading..." : "Confirm Order"}
+                {isSubmitting ? (
+                  <><IoSyncOutline className="spin" /> Processing...</>
+                ) : (
+                  "Confirm Order"
+                )}
               </button>
               <p className="secure-text">🔒 Secure Checkout Process</p>
             </div>

@@ -1,19 +1,18 @@
-import { useState } from "react"; // Added useState
+import { useState } from "react"; 
 import { useCart } from "../../context/CartContext";
-import { useAuth } from "../../context/AuthContext"; // Added useAuth
+import { useAuth } from "../../context/AuthContext"; 
 import { Link, useNavigate } from "react-router-dom";
-import CheckoutPopup from "../../components/checkout/CheckoutPopup"; // Import Popup
+import CheckoutPopup from "../../components/checkout/CheckoutPopup"; 
 import "./styles/cart.css";
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
-  const { isAuthenticated, user } = useAuth(); // Get auth status
+  const { isAuthenticated, user } = useAuth(); 
   const navigate = useNavigate();
-  const [showPopup, setShowPopup] = useState(false); // State for popup
+  const [showPopup, setShowPopup] = useState(false); 
 
   const totalPrice = cartItems.reduce((acc, item) => acc + (item.pricePerUnit * item.quantity), 0);
 
-  // Logic: If logged in, go to checkout. If guest, show popup.
   const handleCheckout = () => {
     if (isAuthenticated) {
       navigate("/checkout", { state: { isGuest: false, user: user, guestInfo: null } });
@@ -22,10 +21,14 @@ const Cart = () => {
     }
   };
 
-  // Called after guest fills the popup form
   const handlePopupContinue = (guestData) => {
     setShowPopup(false);
     navigate("/checkout", { state: guestData });
+  };
+
+  // Utility to format numbers with commas
+  const formatCurrency = (num) => {
+    return num.toLocaleString('en-EN'); // Using en-EN for comma format (e.g., 1,000,000)
   };
 
   if (cartItems.length === 0) {
@@ -51,7 +54,8 @@ const Cart = () => {
                 <img src={item.image} alt={item.name} className="item-img" />
                 <div className="item-details">
                   <h3>{item.name}</h3>
-                  <p className="unit-price">Rs {item.pricePerUnit} <span className="unit">/ {item.unit}</span></p>
+                  {/* Comma added here */}
+                  <p className="unit-price">Rs {formatCurrency(item.pricePerUnit)} <span className="unit">/ {item.unit}</span></p>
                   
                   <div className="quantity-section">
                     <button className="qty-btn" onClick={() => updateQuantity(item._id, item.quantity - 1)}>—</button>
@@ -62,7 +66,8 @@ const Cart = () => {
               </div>
 
               <div className="item-actions">
-                <p className="item-subtotal">Rs {item.pricePerUnit * item.quantity}</p>
+                {/* Comma added here */}
+                <p className="item-subtotal">Rs {formatCurrency(item.pricePerUnit * item.quantity)}</p>
                 <button className="delete-btn" onClick={() => removeFromCart(item._id)}>
                   <i className="fa-solid fa-trash-can"></i> Remove
                 </button>
@@ -75,7 +80,8 @@ const Cart = () => {
           <div className="footer-content">
             <div className="total-group">
               <span className="total-label">Grand Total:</span>
-              <span className="total-amount">Rs {totalPrice}</span>
+              {/* Comma added here */}
+              <span className="total-amount">Rs {formatCurrency(totalPrice)}</span>
             </div>
             <button className="main-checkout-btn" onClick={handleCheckout}>
               Proceed to Checkout
@@ -84,7 +90,6 @@ const Cart = () => {
         </div>
       </div>
 
-      {/* Popup only shows if user is not logged in */}
       <CheckoutPopup 
         isOpen={showPopup} 
         onClose={() => setShowPopup(false)} 

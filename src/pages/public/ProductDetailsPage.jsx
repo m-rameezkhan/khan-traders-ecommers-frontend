@@ -9,7 +9,6 @@ import ProductShowcase from "../../components/users/ProductShowcase";
 import ProductInfo from "../../components/users/ProductInfo";
 import RelatedSidebar from "../../components/users/RelatedSidebar";
 
-
 import "./styles/ProductDetails.css";
 
 const ProductDetailsPage = () => {
@@ -19,6 +18,11 @@ const ProductDetailsPage = () => {
   const [product, setProduct] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // --- FIX: Scroll to Top on Page Load/ID Change ---
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,13 +56,30 @@ const ProductDetailsPage = () => {
     </div>
   );
 
+  // --- LOGIC: Dynamic Badge Text (Heavy Duty vs Organic) ---
+  const getBadgeText = () => {
+    const cat = product?.category?.toLowerCase() || "";
+    if (cat.includes("machinery") || cat.includes("equipment") || cat.includes("tool")) {
+      return "Heavy Duty";
+    }
+    return "Organic / Fresh"; 
+  };
+
   return (
     <div className="product-page-wrapper fade-in">
       <div className="main-detail-grid">
         {/* Main Content Area */}
         <div className="detail-glass-card">
-          <ProductShowcase product={product} onBack={() => navigate(-1)} />
-          <ProductInfo product={product} />
+          <ProductShowcase 
+            product={product} 
+            onBack={() => navigate(-1)} 
+          />
+          {/* We pass the badge text as a prop if ProductInfo supports it, 
+              or ProductInfo can use the same logic internally */}
+          <ProductInfo 
+            product={product} 
+            badgeText={getBadgeText()} 
+          />
         </div>
 
         {/* Sidebar Area */}

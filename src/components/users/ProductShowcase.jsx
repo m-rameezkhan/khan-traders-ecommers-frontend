@@ -10,6 +10,17 @@ const ProductShowcase = ({ product, onBack }) => {
     document.body.style.overflow = !isFullscreen ? "hidden" : "unset";
   };
 
+  const getBadgeText = () => {
+  const cat = product.category?.toLowerCase() || "";
+  if (cat.includes("machinery") || cat.includes("equipment")) {
+    return "Heavy Duty";
+  }
+  if (cat.includes("chemical")) {
+    return "Industrial Grade";
+  }
+  return "Organic / Fresh"; // Default for fishmeal/feed
+};
+
   const imgUrl = product.image || 'https://via.placeholder.com/600';
 
   return (
@@ -24,7 +35,7 @@ const ProductShowcase = ({ product, onBack }) => {
           <span className={`stock-badge ${product.stockQty > 0 ? 'in' : 'out'}`}>
             {product.stockQty > 0 ? 'In Stock' : 'Out of Stock'}
           </span>
-          <span className="premium-badge">Organic</span>
+          <span className="premium-badge">{getBadgeText()}</span>
         </div>
 
         <button className="expand-btn" title="View Fullscreen">

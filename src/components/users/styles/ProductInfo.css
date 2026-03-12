@@ -262,3 +262,31 @@
     padding: 4px 12px;
     border-radius: 100px;
 }
+
+.stock-status-display {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status-label.in {
+  color: #2c5e3f;
+  background: #f0fdf4;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.status-label.out {
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.low-stock-alert .status-label.in {
+  color: #b45309; /* Orange for low stock */
+  background: #fffbeb;
+}

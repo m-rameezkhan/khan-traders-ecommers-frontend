@@ -28,17 +28,62 @@
     transition: transform 0.5s ease;
 }
 
+/* Base Category Tag */
 .category-tag {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #2c5e3f;
-    padding: 4px 10px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    border-radius: 20px;
+    top: 12px;
+    left: 12px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 900;
     text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Fresh / Food (Green) */
+.category-tag.fresh {
+    background: #ecfdf5;
+    color: #059669;
+    /* border: 1px solid #10b981; */
+}
+
+/* Machinery / Equipment (Industrial Blue) */
+.category-tag.machinery {
+    background: #eff6ff;
+    color: #1d4ed8;
+    /* border: 1px solid #3b82f6; */
+}
+
+/* Premium Grade / Chemicals (Deep Purple) */
+.category-tag.premium {
+    background: #f5f3ff;
+    color: #6d28d9;
+    /* border: 1px solid #8b5cf6; */
+}
+
+/* Tech / Gadgets (Slate/Black) */
+.category-tag.tech {
+    background: #f8fafc;
+    color: #1e293b;
+    /* border: 1px solid #475569; */
+}
+
+/* Ensure the image container is relative for tag positioning */
+.product-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.qty-display small {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-left: 3px;
+    font-weight: 600;
 }
 
 /* Typography */
@@ -173,6 +218,66 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(27, 48, 34, 0.25);
     filter: brightness(1.1);
+}
+
+/* --- Stock Row Layout --- */
+.stock-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.stock-status {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.stock-status.low-stock {
+    color: #dc2626; 
+    animation: pulse-low-stock 2s infinite;
+}
+
+@keyframes pulse-low-stock {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* --- Sold Out Badge (No Blur/Hide) --- */
+.sold-out-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px; /* Opposite side of the category tag */
+    background: #dc2626;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+    z-index: 3;
+}
+
+/* Remove grayscale/blur filters but keep button disabled */
+.card-disabled {
+    cursor: default;
+}
+
+.card-disabled .add-to-cart-btn {
+    background: #cbd5e1 !important;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+    pointer-events: none;
+}
+
+.card-disabled .qty-selector {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 /* Mobile Responsiveness */
