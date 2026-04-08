@@ -13,7 +13,7 @@ import ProductDetails from "../pages/public/ProductDetailsPage";
 
 // Admin Components
 import AdminDashboard from "../pages/admin/AdminDashboard";
-import Dashboard from "../components/admin/Overview";
+import Overview from "../pages/admin/overview/Overview";
 import ProductManager from "../pages/admin/Inventory";
 import UserManager from "../pages/admin/UserManager";
 import OrderManager from "../pages/admin/OrderManager";
@@ -22,6 +22,7 @@ import AdminOrderDetail from "../pages/admin/AdminOrderDetail";
 import AdminUserDetail from "../pages/admin/AdminUserDetail";
 import EditProduct from "../pages/admin/EditProduct";
 import AdminSettings from "../pages/admin/AdminSettings";
+import AnalyticsPage from "../pages/admin/AnalyticsPage";
 
 // Route Guards
 import { PrivateRoute, AdminRoute } from "./PrivateRoute";
@@ -49,7 +50,8 @@ export default function AppRoutes() {
       {/* Admin ONLY Protected Routes */}
       <Route element={<AdminRoute />}>
         <Route path="/admin" element={<AdminDashboard />}>
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="dashboard" element={<Overview />} />
+          <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="inventory" element={<ProductManager />} />
           <Route path="users" element={<UserManager />} />
           <Route path="orders" element={<OrderManager />} />

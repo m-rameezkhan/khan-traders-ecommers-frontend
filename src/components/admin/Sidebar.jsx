@@ -2,13 +2,15 @@ import React from "react";
 import { NavLink } from "react-router-dom"; 
 import { 
   IoGridOutline, IoCubeOutline, IoPeopleOutline, 
-  IoCartOutline, IoSettingsOutline, IoLogOutOutline 
+  IoCartOutline, IoSettingsOutline, IoLogOutOutline, 
+  IoTrendingUpOutline
 } from "react-icons/io5";
 import "./styles/Sidebar.css";
 
 const Sidebar = ({ isOpen }) => {
   const menuItems = [
     { path: "dashboard", label: "Dashboard", icon: <IoGridOutline /> },
+    { path: "analytics", label: "Analytics", icon: <IoTrendingUpOutline /> },
     { path: "inventory", label: "Inventory", icon: <IoCubeOutline /> },
     { path: "users", label: "Customers", icon: <IoPeopleOutline /> },
     { path: "orders", label: "Orders", icon: <IoCartOutline /> },

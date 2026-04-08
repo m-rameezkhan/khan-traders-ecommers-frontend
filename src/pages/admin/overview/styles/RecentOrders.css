@@ -1,0 +1,158 @@
+.recent-orders-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-group h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* Live Badge with Pulse Animation */
+.live-status-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff1f2;
+    color: #e11d48;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: #e11d48;
+    border-radius: 50%;
+    animation: livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(225, 29, 72, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+}
+
+/* View All Button */
+.premium-view-all {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.premium-view-all:hover {
+    background: #f8fafc;
+    color: #1b4d3e;
+}
+
+/* Activity Items */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.premium-row {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-row:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.order-initials-box {
+    width: 48px;
+    height: 48px;
+    background: #f1f5f9;
+    color: #1b4d3e;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.order-info {
+    margin-left: 16px;
+    flex: 1;
+}
+
+.order-info h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.order-info p {
+    margin: 2px 0 0 0;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Dynamic Status Colors from Order Manager */
+.status-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.status-tag.pending { background: #fff7ed; color: #c2410c; }
+.status-tag.confirmed { background: #ecfdf5; color: #059669; }
+.status-tag.packed { background: #fdf4ff; color: #a21caf; }
+.status-tag.shipped { background: #eff6ff; color: #2563eb; }
+.status-tag.delivered { background: #f0fdf4; color: #16a34a; }
+.status-tag.cancelled { background: #fef2f2; color: #dc2626; }
+
+/* Empty/Loading States */
+.empty-orders-state {
+    padding: 40px 0;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}

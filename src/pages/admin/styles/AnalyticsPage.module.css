@@ -1,0 +1,238 @@
+.analyticsContainer {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #fafbfc;
+    min-height: 100vh;
+}
+
+/* Header Section */
+.analyticsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Aligned to bottom for better look */
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.titleSection h1 {
+    font-size: 1.6rem;
+    color: #0f172a;
+    font-weight: 800;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.titleSection p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+/* Action Section */
+.actionSection {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.rangePicker {
+    background: #f1f5f9;
+    padding: 0.25rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 0.15rem;
+    border: 1px solid #f1f5f9; /* Very light border */
+}
+
+.rangePicker button {
+    padding: 0.4rem 0.9rem;
+    border: none;
+    background: transparent;
+    border-radius: 9px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rangePicker button.active {
+    background: #ffffff;
+    color: #1b4d3e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.exportBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1b4d3e;
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.1rem;
+    border-radius: 11px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.exportBtn:hover {
+    background: #153d31;
+    transform: translateY(-1px);
+}
+
+/* Metric Tabs Grid - Compact sizing */
+.metricSelectorGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+}
+
+.metricTab {
+    background: #ffffff;
+    padding: 1.1rem 1.3rem;
+    border-radius: 18px;
+    border: 1px solid #f1f5f9; /* Lighter outline */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.metricTab:hover {
+    border-color: #e2e8f0;
+    transform: translateY(-3px);
+}
+
+.metricTab.active {
+    border-color: rgba(27, 77, 62, 0.2);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.06);
+}
+
+.tabIconWrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.tabInfo span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 600;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.tabInfo h3 {
+    margin: 0.1rem 0 0 0;
+    font-size: 1.15rem;
+    color: #1e293b;
+    font-weight: 800;
+}
+
+.activeIndicator {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    border-radius: 10px 10px 0 0;
+}
+
+.staticTab {
+    cursor: default;
+}
+
+.staticTab:hover {
+    transform: none;
+    border-color: #f1f5f9;
+}
+
+/* Custom Date Inputs - Refined */
+.customDateInputs {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #f1f5f9;
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+}
+
+.customDateInputs input {
+    border: none;
+    background: transparent;
+    font-size: 0.75rem;
+    color: #1b4d3e;
+    font-weight: 700;
+    outline: none;
+    width: 95px;
+}
+
+.toSep {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #cbd5e1;
+}
+
+/* Global Polish */
+.fadeIn {
+    animation: fadeInAnim 0.5s ease-out forwards;
+}
+
+@keyframes fadeInAnim {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Custom Date Wrapper to align button and inputs */
+.customDateWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.applyBtn {
+    background: #1b4d3e;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+}
+
+.applyBtn:hover {
+    background: #153d31;
+    transform: scale(1.05);
+}
+
+.applyBtn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .analyticsHeader { flex-direction: column; align-items: flex-start; }
+    .actionSection { width: 100%; justify-content: flex-start; }
+    .metricSelectorGrid { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,56 @@
+.overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.welcome-text h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.welcome-text p {
+    color: #64748b;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.primary-btn {
+    background: #1b4d3e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(27, 77, 62, 0.2);
+}
+
+.primary-btn:hover {
+    background: #143a2f;
+    transform: translateY(-2px);
+}
+
+.export-btn {
+    background: white;
+    color: #1b4d3e;
+    border: 2px solid #1b4d3e;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.export-btn:hover {
+    background: #f0fdf4;
+}

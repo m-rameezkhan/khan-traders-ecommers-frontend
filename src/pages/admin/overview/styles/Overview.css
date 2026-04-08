@@ -1,0 +1,54 @@
+.overview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 40px;
+}
+
+/* --- The Main Dashboard Grid --- */
+.analytics-layout {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr; /* Graph takes more space than recent orders */
+    gap: 24px;
+    align-items: start;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+    .analytics-layout {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+}
+
+/* --- Loader Styling --- */
+.dashboard-loader {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f1f5f9;
+    border-top: 4px solid #1b4d3e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
