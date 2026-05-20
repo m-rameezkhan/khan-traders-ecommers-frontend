@@ -4,6 +4,7 @@ import axios from "axios";
 import { IoArrowBackOutline, IoCloudUploadOutline, IoSyncOutline, IoSaveOutline, IoStarOutline } from "react-icons/io5";
 import { showToast } from "../../utils/toast"; 
 import "./styles/EditProduct.css"; 
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -49,7 +50,7 @@ const EditProduct = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`https://khan-traders-api.onrender.com/api/products/update-item/${id}`, formData, {
+      await axios.put(buildApiUrl(`/api/products/update-item/${id}`), formData, {
         headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${token}` }
       });
       showToast("Changes saved successfully!", "success");

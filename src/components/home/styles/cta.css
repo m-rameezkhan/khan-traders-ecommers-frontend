@@ -1,0 +1,119 @@
+.cta-section {
+  padding: 64px 32px;
+  background: linear-gradient(135deg, #112523 0%, #1b4d3e 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 64px auto;
+  border-radius: 8px;
+}
+
+.cta-content {
+  flex: 1;
+}
+
+.cta-content h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.cta-content p {
+  font-size: 17px;
+  color: #d9ead7;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.cta-section .cta-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-section .btn {
+  padding: 12px 26px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.cta-section .btn-primary {
+  background: #43a047;
+  color: white;
+}
+
+.cta-section .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(67, 160, 71, 0.35);
+}
+
+.cta-section .btn-secondary {
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+}
+
+.cta-section .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.cta-features {
+  flex: 0 1 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cta-section .feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  border-left: 4px solid #43a047;
+}
+
+.cta-section .feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: rgba(67, 160, 71, 0.2);
+  border-radius: 50%;
+  font-size: 22px;
+  color: #cdffcf;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    flex-direction: column;
+    gap: 32px;
+    padding: 44px 20px;
+    margin: 44px 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 28px;
+  }
+
+  .cta-section .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-features {
+    width: 100%;
+    flex-basis: auto;
+  }
+}

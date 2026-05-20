@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { io } from "socket.io-client";
 import {
   IoBagHandleOutline, IoPeopleOutline,
   IoWalletOutline, IoTrendingUpOutline, IoCubeOutline
 } from "react-icons/io5";
 import "../styles/StatsGrid.css";
 import socket from "../../../../utils/socket"; // Importing the initialized socket instance
+import { buildApiUrl } from "../../../../utils/apiConfig";
 
 
 const StatsGrid = () => {
@@ -16,17 +16,17 @@ const StatsGrid = () => {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/settings/dashboard-stats`, {
+      const res = await axios.get(buildApiUrl("/api/settings/dashboard-stats"), {
         headers: { Authorization: `Bearer ${token}` }
       });
 
       const s = res.data.stats;
       // Array prepare kar rahe hain mapping ke liye
       setStats([
-        { label: "Revenue", value: s.totalRevenue, color: "green", growth: "Live", type: "currency" },
-        { label: "Orders", value: s.totalOrders, color: "blue", growth: "Total", type: "number" },
-        { label: "Customers", value: s.totalUsers, color: "purple", growth: "Active", type: "number" },
-        { label: "Products", value: s.totalProducts, color: "orange", growth: "In Stock", type: "number" },
+        { label: "Revenue", value: s.totalRevenue, color: "canopy", growth: "Live", type: "currency" },
+        { label: "Orders", value: s.totalOrders, color: "leaf", growth: "Total", type: "number" },
+        { label: "Customers", value: s.totalUsers, color: "moss", growth: "Active", type: "number" },
+        { label: "Products", value: s.totalProducts, color: "earth", growth: "In Stock", type: "number" },
       ]);
       setLoading(false);
     } catch (err) {

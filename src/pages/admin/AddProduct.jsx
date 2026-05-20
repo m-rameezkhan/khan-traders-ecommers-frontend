@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { IoCloudUploadOutline, IoBagAddOutline } from "react-icons/io5";
 import "./styles/AddProduct.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AddProduct = () => {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.post("https://khan-traders-api.onrender.com/api/products/add-item", formData, {
+      await axios.post(buildApiUrl("/api/products/add-item"), formData, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

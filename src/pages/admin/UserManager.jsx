@@ -6,6 +6,7 @@ import {
   IoRefreshOutline, IoChevronForwardOutline, IoPersonCircleOutline
 } from "react-icons/io5";
 import "./styles/UserManager.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const UserManager = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const UserManager = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const API_URL = "https://khan-traders-api.onrender.com/api/users";
+  const API_URL = buildApiUrl("/api/users");
   const token = localStorage.getItem("token");
 
   const fetchUsers = async (isManualRefresh = false) => {

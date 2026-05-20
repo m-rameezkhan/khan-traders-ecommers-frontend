@@ -1,11 +1,9 @@
 import { io } from "socket.io-client";
+import { API_BASE_URL } from "./apiConfig";
 
-// Sirf ek baar initialize hoga
-const SOCKET_URL = "https://khan-traders-api.onrender.com";
-
-const socket = io(SOCKET_URL, {
+const socket = io(API_BASE_URL, {
   autoConnect: true,
-  reconnection: true, // Connection toot jaye to khud reconnect karega
+  reconnection: true,
 });
 
 export default socket;

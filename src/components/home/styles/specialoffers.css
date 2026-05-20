@@ -1,0 +1,110 @@
+.special-offers-section {
+  padding: 72px 20px;
+  background: #ffffff;
+}
+
+.special-offers-section h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 36px;
+  color: #112523;
+  font-weight: 800;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offer-card {
+  background: #f5f8f3;
+  border-radius: 8px;
+  padding: 34px 28px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(17, 37, 35, 0.06);
+  border: 1px solid #dfe8dd;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.offer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #112523, #1b4d3e, #43a047);
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(17, 37, 35, 0.12);
+  border-color: #93b98d;
+}
+
+.offer-icon {
+  font-size: 44px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  color: #1b4d3e;
+}
+
+.offer-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #112523;
+  margin-bottom: 14px;
+}
+
+.discount-badge {
+  display: inline-block;
+  background: #1b4d3e;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 12px 0;
+}
+
+.offer-card p {
+  color: #607467;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 14px 0;
+}
+
+.btn-small {
+  display: inline-block;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #1b4d3e 0%, #2f6f3e 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin-top: 8px;
+}
+
+.btn-small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(27, 77, 62, 0.28);
+}
+
+@media (max-width: 768px) {
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .special-offers-section h2 {
+    font-size: 24px;
+  }
+}

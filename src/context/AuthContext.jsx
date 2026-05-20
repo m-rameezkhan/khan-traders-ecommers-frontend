@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { buildApiUrl } from "../utils/apiConfig";
 
 const AuthContext = createContext();
 
@@ -30,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
   // Signup
   const signup = async (payload) => {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
+    const res = await fetch(buildApiUrl("/api/auth/register"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -48,7 +49,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login
   const login = async (payload) => {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
+    const res = await fetch(buildApiUrl("/api/auth/login"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

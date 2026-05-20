@@ -10,6 +10,8 @@ import OrderSuccess from "../pages/public/OrderSuccess";
 import Orders from "../pages/public/Orders";
 import UserProfile from "../pages/public/UserProfile";
 import ProductDetails from "../pages/public/ProductDetailsPage";
+import About from "../pages/public/About";
+import ContactUs from "../pages/public/ContactUs";
 
 // Admin Components
 import AdminDashboard from "../pages/admin/AdminDashboard";
@@ -40,7 +42,10 @@ export default function AppRoutes() {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/order-success" element={<OrderSuccess />} />
       <Route path="/user-profile" element={<UserProfile />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/Product/:id" element={<ProductDetails />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact-us" element={<ContactUs />} />
 
       {/* Standard Protected Routes (Customers & Admins) */}
       <Route element={<PrivateRoute />}>
@@ -50,6 +55,7 @@ export default function AppRoutes() {
       {/* Admin ONLY Protected Routes */}
       <Route element={<AdminRoute />}>
         <Route path="/admin" element={<AdminDashboard />}>
+          <Route index element={<Overview />} />
           <Route path="dashboard" element={<Overview />} />
           <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="inventory" element={<ProductManager />} />

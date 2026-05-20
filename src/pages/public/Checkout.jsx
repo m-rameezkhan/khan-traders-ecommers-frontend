@@ -6,6 +6,7 @@ import { showToast } from "../../utils/toast";
 import EditInfoModal from "../../components/common/EditInfoModal";
 import { IoArrowBack, IoAlertCircleOutline, IoSyncOutline } from "react-icons/io5"; 
 import "./styles/checkout.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const Checkout = () => {
   const { cartItems, clearCart } = useCart();
@@ -32,7 +33,7 @@ const Checkout = () => {
   useEffect(() => {
     const fetchFee = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/settings/delivery-fee`);
+        const response = await fetch(buildApiUrl("/api/settings/delivery-fee"));
         const data = await response.json();
         if (data.deliveryFee) {
           setDeliveryCharge(data.deliveryFee);
@@ -89,7 +90,7 @@ const Checkout = () => {
         totalAmount: grandTotal,
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/place-order`, {
+      const response = await fetch(buildApiUrl("/api/orders/place-order"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

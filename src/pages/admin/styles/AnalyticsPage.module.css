@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #fafbfc;
+    background-color: #f5f8f3;
     min-height: 100vh;
 }
 
@@ -18,7 +18,7 @@
 
 .titleSection h1 {
     font-size: 1.6rem;
-    color: #0f172a;
+    color: #112523;
     font-weight: 800;
     margin: 0;
     display: flex;
@@ -28,7 +28,7 @@
 }
 
 .titleSection p {
-    color: #64748b;
+    color: #607467;
     font-size: 0.9rem;
     margin-top: 0.3rem;
 }
@@ -41,12 +41,12 @@
 }
 
 .rangePicker {
-    background: #f1f5f9;
+    background: #e9f1e8;
     padding: 0.25rem;
     border-radius: 12px;
     display: flex;
     gap: 0.15rem;
-    border: 1px solid #f1f5f9; /* Very light border */
+    border: 1px solid #d7e3d5;
 }
 
 .rangePicker button {
@@ -56,7 +56,7 @@
     border-radius: 9px;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #64748b;
+    color: #607467;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -97,8 +97,8 @@
 .metricTab {
     background: #ffffff;
     padding: 1.1rem 1.3rem;
-    border-radius: 18px;
-    border: 1px solid #f1f5f9; /* Lighter outline */
+    border-radius: 8px;
+    border: 1px solid #dfe8dd;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -108,7 +108,7 @@
 }
 
 .metricTab:hover {
-    border-color: #e2e8f0;
+    border-color: #b8d2ba;
     transform: translateY(-3px);
 }
 
@@ -130,7 +130,7 @@
 
 .tabInfo span {
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: #607467;
     font-weight: 600;
     display: block;
     text-transform: uppercase;
@@ -140,8 +140,23 @@
 .tabInfo h3 {
     margin: 0.1rem 0 0 0;
     font-size: 1.15rem;
-    color: #1e293b;
+    color: #112523;
     font-weight: 800;
+}
+
+.percentageChange {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.percentageChange.positive {
+    color: #10b981;
+}
+
+.percentageChange.negative {
+    color: #ef4444;
 }
 
 .activeIndicator {
@@ -167,7 +182,7 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    background: #f1f5f9;
+    background: #e9f1e8;
     padding: 0.4rem 0.8rem;
     border-radius: 10px;
     border: 1px solid transparent;
@@ -186,7 +201,74 @@
 .toSep {
     font-size: 0.7rem;
     font-weight: 800;
-    color: #cbd5e1;
+    color: #8da08e;
+}
+
+.errorBanner {
+    padding: 0.85rem 1rem;
+    border: 1px solid #f2c7c7;
+    background: #fff5f5;
+    color: #9d2626;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.insightGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.insightCard {
+    background: #ffffff;
+    border: 1px solid #dfe8dd;
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 14px 28px -18px rgba(17, 37, 35, 0.28);
+}
+
+.insightCard h2 {
+    margin: 0 0 1rem;
+    color: #112523;
+    font-size: 1rem;
+}
+
+.statusList,
+.recentList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.statusRow,
+.recentRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #f5f8f3;
+    border: 1px solid #e1eadf;
+    border-radius: 8px;
+    text-transform: capitalize;
+}
+
+.statusRow span,
+.recentRow span {
+    color: #4d6254;
+    font-weight: 650;
+}
+
+.statusRow strong,
+.recentRow strong {
+    color: #1b4d3e;
+}
+
+.mutedText {
+    color: #607467;
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 /* Global Polish */
@@ -233,6 +315,7 @@
 
 @media (max-width: 768px) {
     .analyticsHeader { flex-direction: column; align-items: flex-start; }
-    .actionSection { width: 100%; justify-content: flex-start; }
-    .metricSelectorGrid { grid-template-columns: 1fr 1fr; }
+    .actionSection { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+    .metricSelectorGrid { grid-template-columns: 1fr; }
+    .insightGrid { grid-template-columns: 1fr; }
 }

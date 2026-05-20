@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { IoArrowForwardOutline, IoFlash } from "react-icons/io5"; // Flash icon for "Live"
+import { IoArrowForwardOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
 import axios from "axios";
 import "../styles/RecentOrders.css";
 import notificationSound from "../../../../assets/notification-sound.mp3"; // Importing notification sound
 import socket from "../../../../utils/socket"; // Importing the initialized socket instance
+import { buildApiUrl } from "../../../../utils/apiConfig";
 
 const RecentOrders = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const RecentOrders = () => {
 
   const fetchRecentOrders = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders`, {
+      const res = await axios.get(buildApiUrl("/api/orders"), {
         headers: { Authorization: `Bearer ${token}` }
       });
       const latestFour = res.data
@@ -38,7 +38,7 @@ const RecentOrders = () => {
         if (exists) return prevOrders;
         return [newOrder, ...prevOrders].slice(0, 4);
       });
-      new Audio().play().catch(() => {});
+      new Audio(notificationSound).play().catch(() => {});
     });
 
     return () => socket.off("newOrder");
@@ -82,7 +82,7 @@ const RecentOrders = () => {
               </div>
               <div className="order-info">
                 <h4>{order.user?.name || "Guest Customer"}</h4>
-                <p>Rs. {order.totalAmount?.toLocaleString()} • {order.items?.length || 0} items</p>
+                <p>Rs. {order.totalAmount?.toLocaleString()} | {order.items?.length || 0} items</p>
               </div>
               <div className={`status-tag ${order.status?.toLowerCase()}`}>
                 {order.status}

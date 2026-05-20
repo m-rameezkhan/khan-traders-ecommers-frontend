@@ -76,6 +76,11 @@ const MainChartCard = ({ rawData, loading, activeMetric, metricConfig, range }) 
       </div>
 
       <div className="detailed-chart-wrapper">
+        {loading ? (
+          <div className="chart-empty-state">Loading analytics...</div>
+        ) : chartData.length === 0 ? (
+          <div className="chart-empty-state">No analytics data found for this range.</div>
+        ) : (
         <ResponsiveContainer width="100%" height={400}>
           {activeChart === "Area" ? (
             <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
@@ -136,6 +141,7 @@ const MainChartCard = ({ rawData, loading, activeMetric, metricConfig, range }) 
             </BarChart>
           )}
         </ResponsiveContainer>
+        )}
       </div>
     </div>
   );

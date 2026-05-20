@@ -1,25 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, 
   Tooltip, ResponsiveContainer 
 } from "recharts";
 import { IoArrowForwardOutline, IoStatsChartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles/AnalyticsPanel.css";
+import { buildApiUrl, getAuthHeaders } from "../../../../utils/apiConfig";
 
-const AnalyticsPanel = ({ data }) => {
+const AnalyticsPanel = () => {
   const navigate = useNavigate();
+  const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // Mock data for Dashboard (Last 7 Days)
-  const chartData = data || [
-    { name: "Mon", revenue: 4200, orders: 12 },
-    { name: "Tue", revenue: 3800, orders: 10 },
-    { name: "Wed", revenue: 5100, orders: 15 },
-    { name: "Thu", revenue: 4900, orders: 14 },
-    { name: "Fri", revenue: 6200, orders: 20 },
-    { name: "Sat", revenue: 7500, orders: 25 },
-    { name: "Sun", revenue: 5800, orders: 18 },
-  ];
+  useEffect(() => {
+    const fetchTrend = async () => {
+      try {
+        const res = await axios.get(buildApiUrl("/api/dashboard/revenue-trend?range=7D"), {
+          headers: getAuthHeaders()
+        });
+        const data = res.data?.data || [];
+        setChartData(data.map((item) => ({
+          name: new Date(item.date).toLocaleDateString("en-US", { weekday: "short" }),
+          revenue: item.revenue,
+          orders: item.orders
+        })));
+      } catch (err) {
+        setError(err.response?.data?.message || "Unable to load weekly growth");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTrend();
+  }, []);
 
   return (
     <div className="analytics-card dashboard-version">
@@ -37,6 +53,13 @@ const AnalyticsPanel = ({ data }) => {
       </div>
 
       <div className="chart-container">
+        {loading ? (
+          <div className="analytics-mini-state">Loading weekly growth...</div>
+        ) : error ? (
+          <div className="analytics-mini-state error">{error}</div>
+        ) : chartData.length === 0 ? (
+          <div className="analytics-mini-state">No sales data yet.</div>
+        ) : (
         <ResponsiveContainer width="100%" height={250}>
           <AreaChart data={chartData}>
             <defs>
@@ -66,6 +89,7 @@ const AnalyticsPanel = ({ data }) => {
             />
           </AreaChart>
         </ResponsiveContainer>
+        )}
       </div>
     </div>
   );

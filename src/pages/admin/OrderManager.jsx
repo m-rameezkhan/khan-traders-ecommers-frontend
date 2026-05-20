@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { io } from "socket.io-client";
 import { IoSearchOutline } from "react-icons/io5"; // Added search icon
 import OrderSummaryCard from "../../components/admin/OrderSummaryCard";
 import "./styles/OrderManager.css";
 import { useNavigate } from "react-router";
-
-const socket = io("https://khan-traders-api.onrender.com");
+import { buildApiUrl } from "../../utils/apiConfig";
+import socket from "../../utils/socket";
 
 const OrderManager = () => {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const OrderManager = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders`, {
+      const res = await axios.get(buildApiUrl("/api/orders"), {
         headers: { Authorization: `Bearer ${token}` }
       });
       const sorted = res.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));

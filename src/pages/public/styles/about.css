@@ -1,0 +1,242 @@
+.about-page {
+  background: #ffffff;
+}
+
+.about-hero {
+  background: linear-gradient(135deg, #112523 0%, #1b4d3e 100%);
+  color: white;
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.about-kicker {
+  display: inline-block;
+  color: #cdffcf;
+  font-weight: 800;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.about-hero-content h1 {
+  font-size: 46px;
+  font-weight: 850;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.about-hero-content p {
+  font-size: 19px;
+  color: #d9ead7;
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.about-section {
+  padding: 72px 20px;
+}
+
+.about-section.muted-bg {
+  background: #f5f8f3;
+}
+
+.about-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-page .section-content {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 54px;
+  align-items: center;
+}
+
+.about-section h2 {
+  font-size: 34px;
+  font-weight: 850;
+  color: #112523;
+  margin-bottom: 24px;
+}
+
+.text-content p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #526658;
+  margin-bottom: 18px;
+}
+
+.about-image-panel {
+  background: #f5f8f3;
+  border: 1px solid #dfe8dd;
+  border-radius: 8px;
+  min-height: 320px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 16px 36px rgba(17, 37, 35, 0.08);
+}
+
+.about-image-panel svg {
+  font-size: 84px;
+  color: #1b4d3e;
+  margin-bottom: 18px;
+}
+
+.about-image-panel h3 {
+  color: #112523;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.about-image-panel p {
+  color: #607467;
+  line-height: 1.6;
+}
+
+.mission-grid,
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.mission-card,
+.feature-item {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(17, 37, 35, 0.06);
+  border: 1px solid #dfe8dd;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mission-card:hover,
+.feature-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(17, 37, 35, 0.12);
+}
+
+.about-page .mission-icon,
+.about-page .feature-icon {
+  font-size: 42px;
+  color: #1b4d3e;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.mission-card {
+  text-align: center;
+}
+
+.mission-card h3,
+.feature-item h3 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #112523;
+  margin-bottom: 10px;
+}
+
+.mission-card p,
+.feature-item p {
+  color: #607467;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.about-cta {
+  background: linear-gradient(135deg, #112523 0%, #1b4d3e 100%);
+  color: white;
+  padding: 72px 20px;
+  text-align: center;
+}
+
+.about-cta h2 {
+  font-size: 36px;
+  font-weight: 850;
+  margin-bottom: 14px;
+}
+
+.about-cta p {
+  font-size: 17px;
+  color: #d9ead7;
+  margin-bottom: 32px;
+}
+
+.about-page .cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.about-page .btn-primary {
+  background: #43a047;
+  color: white;
+}
+
+.about-page .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(67, 160, 71, 0.35);
+}
+
+.about-page .btn-secondary {
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+}
+
+.about-page .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 64px 20px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 32px;
+  }
+
+  .about-section {
+    padding: 50px 20px;
+  }
+
+  .section-content {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .about-section h2 {
+    font-size: 26px;
+  }
+
+  .about-page .cta-buttons {
+    flex-direction: column;
+  }
+}

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductCard from "../../components/common/ProductCard";
 import "./styles/product.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         // Replace with your actual API endpoint
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
+        const response = await axios.get(buildApiUrl("/api/products"));
         setProducts(response.data);
         setLoading(false);
       } catch (err) {

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { IoSyncOutline } from "react-icons/io5";
 import { showToast } from "../../utils/toast.js";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 // Import Components
 import ProductShowcase from "../../components/users/ProductShowcase";
@@ -28,7 +29,7 @@ const ProductDetailsPage = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
+        const response = await axios.get(buildApiUrl("/api/products"));
         const data = Array.isArray(response.data) ? response.data : response.data.products || [];
         
         setAllProducts(data);
@@ -38,7 +39,7 @@ const ProductDetailsPage = () => {
           setProduct(found);
         } else {
           showToast("Product not found", "error");
-          navigate("/shop");
+          navigate("/products");
         }
       } catch (err) {
         showToast("Error loading products", "error");

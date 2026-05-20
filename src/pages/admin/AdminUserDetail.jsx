@@ -6,12 +6,13 @@ import UserIdentityCard from "../../components/admin/UserIdentityCard";
 import UserActionCard from "../../components/admin/UserActionCard";
 import UserEditForm from "../../components/admin/UserEditForm.jsx";
 import "./styles/AdminUserDetail.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const AdminUserDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const API_URL = "https://khan-traders-api.onrender.com/api/users";
+  const API_URL = buildApiUrl("/api/users");
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);

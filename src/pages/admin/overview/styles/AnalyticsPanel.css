@@ -76,6 +76,24 @@
     min-height: 250px;
 }
 
+.analytics-mini-state {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #607467;
+    background: #f5f8f3;
+    border: 1px dashed #c8d8c6;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.analytics-mini-state.error {
+    color: #9d2626;
+    background: #fff5f5;
+    border-color: #f2c7c7;
+}
+
 /* Custom Tooltip Styling for Recharts */
 .recharts-default-tooltip {
     border-radius: 12px !important;

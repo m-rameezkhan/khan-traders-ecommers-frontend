@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./featuredProducts.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -17,8 +18,7 @@ const FeaturedProducts = () => {
     const fetchFeaturedProducts = async () => {
       try {
         setLoading(true);
-        // Ensure there is a trailing slash or correct join for the query param
-        const apiUrl = `${import.meta.env.VITE_API_URL}/api/products?featured=true`;
+        const apiUrl = buildApiUrl("/api/products?featured=true");
 
         const response = await axios.get(apiUrl);
 

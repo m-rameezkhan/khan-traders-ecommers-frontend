@@ -7,7 +7,7 @@
 .stat-card-premium {
     background: linear-gradient(135deg, #ffffff 0%, #f0f7f4 100%);
     padding: 25px;
-    border-radius: 24px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -24,18 +24,18 @@
 
 .stat-icon-box {
     width: 64px; height: 64px;
-    border-radius: 18px;
+    border-radius: 8px;
     display: flex;
     align-items: center; justify-content: center;
     font-size: 1.6rem;
     box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.08);
 }
 
-/* Colors */
-.stat-icon-box.green { background: #dcfce7; color: #15803d; }
-.stat-icon-box.blue { background: #dbeafe; color: #1e40af; }
-.stat-icon-box.purple { background: #f3e8ff; color: #6b21a8; }
-.stat-icon-box.orange { background: #ffedd5; color: #9a3412; }
+/* Forest theme tones */
+.stat-icon-box.canopy { background: #e2f2df; color: #1b4d3e; }
+.stat-icon-box.leaf { background: #e8f5e9; color: #2f6f3e; }
+.stat-icon-box.moss { background: #eef4dc; color: #556b2f; }
+.stat-icon-box.earth { background: #f4efe2; color: #6b5b2f; }
 
 .stat-info h3 { 
     font-size: 0.75rem; 

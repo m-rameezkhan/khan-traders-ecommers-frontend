@@ -8,6 +8,7 @@ import {
 } from "react-icons/io5";
 import OrderCard from "../../components/common/OrderCard";
 import "./styles/orders.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const Orders = () => {
   const { token, loading: authLoading } = useAuth(); // Added authLoading if your context has it
@@ -26,7 +27,7 @@ const Orders = () => {
       }
 
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders/my-orders`, {
+        const res = await axios.get(buildApiUrl("/api/orders/my-orders"), {
           headers: { Authorization: `Bearer ${storedToken}` }
         });
 

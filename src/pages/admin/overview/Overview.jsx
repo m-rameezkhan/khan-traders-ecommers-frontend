@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"; // or your custom API utility
 import DashboardHeader from "./components/DashboardHeader";
 import StatsGrid from "./components/StatsGrid";
 import AnalyticsPanel from "./components/AnalyticsPanel";

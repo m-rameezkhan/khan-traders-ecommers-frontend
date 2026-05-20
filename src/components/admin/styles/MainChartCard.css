@@ -95,3 +95,15 @@
 .recharts-cartesian-grid-horizontal line {
     stroke: #f1f5f9;
 }
+
+.chart-empty-state {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #607467;
+    background: #f5f8f3;
+    border: 1px dashed #c8d8c6;
+    border-radius: 8px;
+    font-weight: 700;
+}

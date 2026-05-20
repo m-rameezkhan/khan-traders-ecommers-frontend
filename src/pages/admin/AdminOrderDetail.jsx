@@ -7,6 +7,7 @@ import CustomerCard from "../../components/admin/CustomerCard.jsx";
 import StatusCard from "../../components/admin/StatusCard.jsx";
 import { showToast } from "../../utils/toast.js";
 import "./styles/AdminOrderDetail.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const AdminOrderDetail = () => {
   const { id } = useParams();
@@ -25,7 +26,7 @@ const AdminOrderDetail = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders/${id}`, {
+        const res = await axios.get(buildApiUrl(`/api/orders/${id}`), {
           headers: { Authorization: `Bearer ${token}` }
         });
         setOrder(res.data);
@@ -42,7 +43,7 @@ const AdminOrderDetail = () => {
   const handleUpdate = async () => {
     setUpdating(true);
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/orders/${id}/order-status`,
+      await axios.put(buildApiUrl(`/api/orders/${id}/order-status`),
         { status: newStatus, deliveryFee: Number(newDeliveryFee) },
         { headers: { Authorization: `Bearer ${token}` } }
       );

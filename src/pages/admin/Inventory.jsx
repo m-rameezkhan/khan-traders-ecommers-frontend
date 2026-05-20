@@ -6,9 +6,10 @@ import {
   IoSearchOutline, IoSyncOutline, IoEyeOutline, IoStar
 } from "react-icons/io5";
 import "./styles/Inventory.css";
+import { buildApiUrl } from "../../utils/apiConfig";
 
 const CACHE_KEY = "kt_inventory_cache";
-const API_PRODUCT_URL = `${import.meta.env.VITE_API_URL}/api/products`;
+const API_PRODUCT_URL = buildApiUrl("/api/products");
 
 const InventoryList = () => {
   const navigate = useNavigate();
